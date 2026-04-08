@@ -3,7 +3,37 @@
     "allow": [
       "WebFetch(domain:luismarino.framer.website)",
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
-      "Bash(npm -v)"
+      "Bash(npm -v)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/LOGO PERSONAL/Logo Personal.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/logo.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/LOGO PERSONAL/Logo Personal Share.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/og-image.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/LOGO PERSONAL/Logo Personal_Mesa de trabajo 1.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/logo-dark.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/LOGO PERSONAL/Logo Personal_Mesa de trabajo 1 copia.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/logo-light.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/PORTADAS PROYECTOS/Portadas Portfolio_Mesa de trabajo 1.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/projects/twins-music-house.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/PORTADAS PROYECTOS/Portadas Portfolio_Mesa de trabajo 1 copia.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/projects/teatro-colon.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/PORTADAS PROYECTOS/Portadas Portfolio_Mesa de trabajo 1 copia 2.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/projects/kolapse.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/PORTADAS PROYECTOS/Portadas Portfolio_Mesa de trabajo 1 copia 3.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/projects/national-geographic.png)",
+      "Bash(cp \"/Users/luismarino/Desktop/LUIS/PORTFOLIO/PORTADAS PROYECTOS/Portadas Portfolio_Mesa de trabajo 1 copia 4.png\" /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/projects/buena.png)",
+      "WebFetch(domain:mats.zip)",
+      "WebFetch(domain:moritzpetersen.com)",
+      "WebFetch(domain:www.kookie-kollective.com)",
+      "WebFetch(domain:koto.com)",
+      "WebFetch(domain:fluid.glass)",
+      "WebFetch(domain:sohub.digital)",
+      "WebFetch(domain:www.figma.com)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(chmod +x /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/dev.sh)",
+      "Bash(ln -sf /opt/homebrew/bin/node /usr/local/bin/node)",
+      "Read(//usr/local/bin/**)",
+      "Bash(mkdir -p /Users/luismarino/.local/bin)",
+      "Bash(ln -sf /opt/homebrew/bin/node /Users/luismarino/.local/bin/node)",
+      "Read(//Users/luismarino/.local/bin/**)",
+      "Bash(ls /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/profile*)",
+      "Bash(ls /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/*.jpg)",
+      "Bash(ls /Users/luismarino/Desktop/CL4UDE-PJ/Portfolio/public/*.png)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)"
     ]
   }
 }
