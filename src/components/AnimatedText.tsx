@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CSSProperties } from "react";
 
 interface AnimatedTextProps {
   text: string;
   className?: string;
   delay?: number;
   as?: "h1" | "h2" | "h3" | "p" | "span";
+  style?: CSSProperties;
 }
 
 export default function AnimatedText({
@@ -14,11 +16,12 @@ export default function AnimatedText({
   className = "",
   delay = 0,
   as: Tag = "h1",
+  style,
 }: AnimatedTextProps) {
   const words = text.split(" ");
 
   return (
-    <Tag className={className}>
+    <Tag className={className} style={style}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden">
           <motion.span

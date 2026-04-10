@@ -6,7 +6,7 @@ import FadeIn from "./FadeIn";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-8 md:px-16 lg:px-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingLeft: "112px", paddingRight: "112px" }}>
       <div className="max-w-[1600px] mx-auto w-full text-center">
         {/* Role tag */}
         <FadeIn delay={0.3}>
