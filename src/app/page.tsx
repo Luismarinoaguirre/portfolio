@@ -9,13 +9,15 @@ import Services from "@/components/Services";
 import Marquee from "@/components/Marquee";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import LogoCarousel from "@/components/LogoCarousel";
 
 export default function Home() {
   return (
     <SmoothScroll>
       <Navbar />
       <Hero />
-      <div style={{ height: "200px" }} />
+      <LogoCarousel />
+      <div style={{ height: "120px" }} />
       <About />
       <div style={{ height: "200px" }} />
       <Projects />

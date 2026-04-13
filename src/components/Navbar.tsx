@@ -4,21 +4,33 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { GooeyInput } from "./ui/gooey-input";
 
 const navItems = [
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Services", href: "/#services" },
+  { label: "About Me", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 50);
+      if (currentY > 100) {
+        setIsHidden(currentY > lastY);
+      } else {
+        setIsHidden(false);
+      }
+      lastY = currentY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -31,8 +43,8 @@ export default function Navbar() {
     <>
       <motion.header
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+        animate={{ y: isHidden && !isMobileOpen ? -150 : 0 }}
+        transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
         className="fixed top-0 left-0 right-0 z-50"
         style={{ paddingLeft: "112px", paddingRight: "112px" }}
       >
@@ -65,8 +77,10 @@ export default function Navbar() {
             </nav>
           </div>
 
-          {/* Spacer to balance logo — keeps pill centered */}
-          <div className="hidden md:block" style={{ width: "52px" }} />
+          {/* Search — right side */}
+          <div className="hidden md:flex items-center z-10">
+            <GooeyInput placeholder="Search..." />
+          </div>
 
           {/* Mobile toggle */}
           <button

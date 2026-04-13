@@ -46,7 +46,7 @@ export const projects: Project[] = [
     subtitle: "Mobile App",
     category: "UX/UI",
     tags: ["UX/UI", "Mobile", "App"],
-    image: "/projects/unite.png",
+    image: "/projects/Familyproject.jpg",
     year: "2023",
     color: "#6bc5a0",
   },

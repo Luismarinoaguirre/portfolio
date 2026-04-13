@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import AnimatedText from "./AnimatedText";
 import FadeIn from "./FadeIn";
+import { Terminal } from "./ui/terminal";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -25,7 +26,7 @@ export default function About() {
         style={{ paddingTop: "120px", paddingBottom: "80px", paddingLeft: "112px", paddingRight: "112px" }}
       >
         <AnimatedText
-          text="About"
+          text="About Me"
           className="font-bold tracking-[-0.04em] text-foreground text-center"
           delay={0.1}
           as="h2"
@@ -106,81 +107,48 @@ export default function About() {
         </div>
       </div>
 
-      {/* Part 3: Info blocks below */}
+      {/* Part 3: Terminal — centered */}
       <div
-        style={{ paddingLeft: "112px", paddingRight: "112px", paddingTop: "80px", paddingBottom: "120px" }}
+        style={{ paddingTop: "80px", paddingBottom: "120px" }}
       >
-        <div className="max-w-[1600px] mx-auto">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: "60px",
-            }}
-          >
-            {/* Capabilities */}
-            <FadeIn delay={0.1}>
-              <div>
-                <span
-                  className="text-foreground font-mono uppercase block"
-                  style={{ fontSize: "12px", letterSpacing: "0.08em", marginBottom: "16px" }}
-                >
-                  (01_Core.Capabilities)
-                </span>
-                {["UX Design", "UI Design", "Product Design", "Graphic Design", "Industrial Design", "Prototyping"].map((item) => (
-                  <span
-                    key={item}
-                    className="text-muted/60 font-mono uppercase block"
-                    style={{ fontSize: "13px", lineHeight: "2.2" }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
-
-            {/* Identity */}
-            <FadeIn delay={0.2}>
-              <div>
-                <span
-                  className="text-foreground font-mono uppercase block"
-                  style={{ fontSize: "12px", letterSpacing: "0.08em", marginBottom: "16px" }}
-                >
-                  (02_Identity)
-                </span>
-                <p
-                  className="text-muted/60 uppercase"
-                  style={{ fontSize: "13px", lineHeight: "1.9", fontFamily: "var(--font-mono)" }}
-                >
-                  Designing with clarity, intention, and a user-first approach to create meaningful digital products.
-                </p>
-              </div>
-            </FadeIn>
-
-            {/* Skill Stack */}
-            <FadeIn delay={0.3}>
-              <div>
-                <span
-                  className="text-foreground font-mono uppercase block"
-                  style={{ fontSize: "12px", letterSpacing: "0.08em", marginBottom: "16px" }}
-                >
-                  (03_Skill.Stack)
-                </span>
-                {["Figma", "Adobe Suite", "Framer", "Next.js", "Tailwind CSS", "Framer Motion"].map((item) => (
-                  <span
-                    key={item}
-                    className="text-muted/60 font-mono uppercase block"
-                    style={{ fontSize: "13px", lineHeight: "2.2" }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
-          </div>
+        <div style={{ maxWidth: "820px", marginLeft: "auto", marginRight: "auto", paddingLeft: "24px", paddingRight: "24px" }}>
+          <FadeIn delay={0.1}>
+            <Terminal
+              commands={[
+                "cat 01_Core.Capabilities",
+                "cat 02_Identity",
+                "cat 03_Skill.Stack",
+              ]}
+              outputs={{
+                0: [
+                  "UX Design",
+                  "UI Design",
+                  "Product Design",
+                  "Graphic Design",
+                  "Industrial Design",
+                  "Prototyping",
+                ],
+                1: [
+                  "Designing with clarity, intention, and a",
+                  "user-first approach to create meaningful",
+                  "digital products.",
+                ],
+                2: [
+                  "Figma",
+                  "Adobe Suite",
+                  "Framer",
+                  "Next.js",
+                  "Tailwind CSS",
+                  "Framer Motion",
+                ],
+              }}
+              typingSpeed={40}
+              delayBetweenCommands={1200}
+            />
+          </FadeIn>
 
           {/* Statement */}
-          <FadeIn delay={0.4}>
+          <FadeIn delay={0.3}>
             <p
               className="text-foreground/90 font-semibold uppercase text-center"
               style={{ fontSize: "16px", letterSpacing: "0.04em", lineHeight: "1.7", marginTop: "80px", maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}

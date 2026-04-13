@@ -33,7 +33,26 @@
       "Bash(gh auth:*)",
       "Bash(gh repo:*)",
       "Bash(git remote:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "mcp__Figma__get_screenshot",
+      "mcp__Figma__get_design_context",
+      "Bash(mv \"Image.png\" playlists-page.png)",
+      "Bash(mv \"Card.png\" playlists-table.png)",
+      "Bash(mv \"Number input container.png\" mockup.png)",
+      "Bash(mv \"Input form.png\" other-pages.png)",
+      "Bash(mv \"Frame 2313.png\" web-screenshot.png)",
+      "Bash(mv \"Frame 13.png\" mockup-photo.png)",
+      "Bash(mv \"iPhone 15 Pro Black Titanium Mockup Portrait.png\" mobile-mockup.png)",
+      "Bash(mv \"Group 34.png\" color-palette.png)",
+      "mcp__Shadcn_UI__get_component",
+      "mcp__Shadcn_UI__list_components",
+      "WebFetch(domain:ui.aceternity.com)",
+      "WebFetch(domain:magicui.design)",
+      "Bash(du -sh public/projects/*/ public/projects/*.jpg public/projects/*.png)",
+      "Bash(find public/projects -type f -size +50M -exec ls -lh {} \\\\;)",
+      "Bash(sips --getProperty format public/projects/twins/playlists-page.png)"
     ]
   }
 }
