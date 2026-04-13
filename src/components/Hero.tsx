@@ -18,10 +18,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ paddingLeft: "112px", paddingRight: "112px" }}
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-px">
       {/* Sparkles background */}
       <div className="absolute inset-0 w-full h-full">
         <SparklesCore
@@ -38,74 +35,42 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 20%, #050505 80%)",
+              "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 20%, var(--background) 80%)",
           }}
         />
       </div>
 
-      {/* Gradient accent line */}
-      <div
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{ top: "58%", width: "600px" }}
-      >
-        <div
-          className="absolute inset-x-20 top-0 h-[2px] w-3/4 blur-sm"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, #FFD000, transparent)",
-          }}
-        />
-        <div
-          className="absolute inset-x-20 top-0 h-px w-3/4"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, #FFD000, transparent)",
-          }}
-        />
-        <div
-          className="absolute inset-x-60 top-0 h-[5px] w-1/4 blur-sm"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, #FFD000, transparent)",
-          }}
-        />
-        <div
-          className="absolute inset-x-60 top-0 h-px w-1/4"
-          style={{
-            background:
-              "linear-gradient(to right, transparent, #FFD000, transparent)",
-          }}
-        />
-      </div>
-
-      <div className="max-w-[1600px] mx-auto w-full text-center relative z-20">
+      <div className="section-container w-full text-center relative z-20">
         {/* Role tag */}
         <FadeIn delay={0.3}>
           <span
             className="inline-block text-accent text-xs font-mono tracking-[0.25em] uppercase"
-            style={{ marginBottom: "40px" }}
+            style={{ marginBottom: "clamp(24px, 4vw, 40px)" }}
           >
             UX/UI Designer
           </span>
         </FadeIn>
 
-        {/* Main heading — large, bold, centered */}
+        {/* Main heading */}
         <FadeIn delay={0.5}>
           <h1
             className="font-bold leading-[1.05] tracking-[-0.03em] text-foreground"
             style={{
-              fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
-              marginBottom: "32px",
+              fontSize: "clamp(2rem, 6vw, 5.5rem)",
+              marginBottom: "clamp(20px, 3vw, 32px)",
             }}
           >
             Designing digital
             <br />
             experiences that{" "}
-            <span className="relative inline-block" style={{ minWidth: "clamp(120px, 20vw, 320px)" }}>
+            <span
+              className="relative inline-flex justify-start"
+              style={{ width: "clamp(110px, 20vw, 340px)", verticalAlign: "baseline" }}
+            >
               <AnimatePresence mode="wait">
                 <motion.span
                   key={rotatingWords[wordIndex]}
-                  className="text-accent inline-block"
+                  className="text-accent absolute left-0"
                   initial={{ y: 30, opacity: 0, filter: "blur(4px)" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                   exit={{ y: -30, opacity: 0, filter: "blur(4px)" }}
@@ -114,15 +79,15 @@ export default function Hero() {
                   {rotatingWords[wordIndex]}
                 </motion.span>
               </AnimatePresence>
+              {/* Invisible text to hold height */}
+              <span className="invisible">resonate.</span>
             </span>
           </h1>
         </FadeIn>
 
         {/* Description */}
         <FadeIn delay={0.8} className="flex justify-center">
-          <p
-            className="text-muted text-sm md:text-base max-w-lg leading-relaxed text-center"
-          >
+          <p className="text-muted text-sm md:text-base max-w-lg leading-relaxed text-center">
             I am a UX/UI designer with experience in graphic and industrial
             design. Rethinking processes through design to create meaningful,
             user-centered products.
@@ -132,7 +97,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <motion.div
           className="flex flex-col items-center gap-3"
-          style={{ marginTop: "80px" }}
+          style={{ marginTop: "clamp(40px, 6vw, 80px)" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
@@ -140,11 +105,7 @@ export default function Hero() {
           <motion.div
             className="w-px h-12 bg-gradient-to-b from-transparent via-muted/40 to-muted/10"
             animate={{ scaleY: [1, 0.6, 1] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
       </div>

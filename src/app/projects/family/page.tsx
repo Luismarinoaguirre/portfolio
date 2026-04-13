@@ -57,7 +57,7 @@ export default function FamilyProject() {
       <Navbar />
       <main
         className="min-h-screen"
-        style={{ backgroundColor: "#050505", color: "#ebebeb" }}
+        style={{ backgroundColor: "#1a1a1a", color: "#ebebeb" }}
       >
         {/* Hero */}
         <section style={{ padding: "160px 112px 80px" }}>

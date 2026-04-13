@@ -10,7 +10,7 @@ export default function Marquee() {
   return (
     <div
       className="overflow-hidden border-t border-b border-white/[0.06]"
-      style={{ paddingTop: "48px", paddingBottom: "48px" }}
+      style={{ paddingTop: "clamp(28px, 4vw, 48px)", paddingBottom: "clamp(28px, 4vw, 48px)" }}
     >
       <motion.div
         className="flex whitespace-nowrap"
@@ -26,13 +26,13 @@ export default function Marquee() {
       >
         <span
           className="text-foreground font-semibold tracking-[-0.02em]"
-          style={{ fontSize: "48px", paddingRight: "0px" }}
+          style={{ fontSize: "clamp(24px, 4vw, 48px)", paddingRight: "0px" }}
         >
           {repeated}
         </span>
         <span
           className="text-foreground font-semibold tracking-[-0.02em]"
-          style={{ fontSize: "48px", paddingRight: "0px" }}
+          style={{ fontSize: "clamp(24px, 4vw, 48px)", paddingRight: "0px" }}
         >
           {repeated}
         </span>

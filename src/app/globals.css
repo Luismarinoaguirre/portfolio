@@ -1,13 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
+  --background: #1a1a1a;
   --foreground: #ebebeb;
   --accent: #FFD000;
   --muted: #777777;
   --card-bg: #111111;
   --border: #1a1a1a;
   --hover-bg: #0d0d0d;
+
+  /* Responsive padding system */
+  --px-section: 20px;
+  --py-section: 80px;
+  --spacer: 100px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --px-section: 40px;
+    --py-section: 100px;
+    --spacer: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --px-section: 80px;
+    --py-section: 128px;
+    --spacer: 180px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --px-section: 112px;
+    --spacer: 200px;
+  }
 }
 
 @theme inline {
@@ -46,12 +74,46 @@ a, button, canvas, div {
   cursor: url('/cursor.svg') 16 16, crosshair;
 }
 
+/* ── Responsive utility classes ── */
+.section-px {
+  padding-left: var(--px-section);
+  padding-right: var(--px-section);
+}
+
+.section-container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-spacer {
+  height: var(--spacer);
+}
+
+/* Services section — 1 column on mobile, 2 columns on desktop */
+.services-layout {
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .services-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
 /* Apple Cards Carousel — responsive card sizes */
 .card-carousel-item {
-  width: 224px;
-  height: 320px;
+  width: 260px;
+  height: 360px;
 }
 @media (min-width: 768px) {
+  .card-carousel-item {
+    width: 384px;
+    height: 540px;
+  }
+}
+@media (min-width: 1280px) {
   .card-carousel-item {
     width: 384px;
     height: 640px;

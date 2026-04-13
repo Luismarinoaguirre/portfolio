@@ -157,10 +157,14 @@ function FlipCard() {
 
 export default function Services() {
   return (
-    <section id="services" className="py-32 md:py-40" style={{ paddingLeft: "112px", paddingRight: "112px" }}>
-      <div className="max-w-[1600px] mx-auto">
+    <section
+      id="services"
+      className="section-px"
+      style={{ paddingTop: "clamp(64px, 10vw, 160px)", paddingBottom: "clamp(64px, 10vw, 160px)" }}
+    >
+      <div className="section-container">
         {/* Header */}
-        <div style={{ marginBottom: "80px" }}>
+        <div style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
           <FadeIn>
             <span className="text-accent text-xs font-mono tracking-[0.2em] uppercase">
               What I Do
@@ -168,23 +172,32 @@ export default function Services() {
           </FadeIn>
           <AnimatedText
             text="Services"
-            className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.02em]"
+            className="font-semibold tracking-[-0.02em]"
+            style={{ fontSize: "clamp(32px, 6vw, 80px)" }}
             delay={0.1}
             as="h2"
           />
         </div>
 
-        {/* Two-column: cards left, flip card right */}
-        <div style={{ display: "flex", gap: "60px", alignItems: "center" }}>
+        {/* Two-column on desktop, single column on mobile */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "clamp(24px, 4vw, 60px)",
+            alignItems: "flex-start",
+          }}
+          className="services-layout"
+        >
           {/* Left — Stacked sticky cards */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             {services.map((service, i) => (
               <div
                 key={service.title}
                 className="sticky"
                 style={{
-                  top: `${120 + i * 40}px`,
-                  marginBottom: "120px",
+                  top: `clamp(${80 + i * 20}px, ${10 + i * 2.5}vw, ${120 + i * 40}px)`,
+                  marginBottom: "clamp(60px, 10vw, 120px)",
                   zIndex: i + 1,
                 }}
               >
@@ -192,13 +205,17 @@ export default function Services() {
                   className="rounded-3xl border border-white/[0.08] shadow-2xl"
                   style={{
                     backgroundColor: "#111111",
-                    padding: "36px",
+                    padding: "clamp(20px, 3vw, 36px)",
                   }}
                 >
                   {/* Tag */}
                   <span
-                    className="text-muted text-sm italic"
-                    style={{ marginBottom: "20px", display: "block" }}
+                    className="text-muted italic"
+                    style={{
+                      fontSize: "clamp(12px, 1.5vw, 14px)",
+                      marginBottom: "clamp(12px, 2vw, 20px)",
+                      display: "block",
+                    }}
                   >
                     {service.tag}
                   </span>
@@ -206,7 +223,10 @@ export default function Services() {
                   {/* Number + Title */}
                   <h3
                     className="font-semibold text-foreground"
-                    style={{ fontSize: "36px", marginBottom: "20px" }}
+                    style={{
+                      fontSize: "clamp(22px, 3.5vw, 36px)",
+                      marginBottom: "clamp(12px, 2vw, 20px)",
+                    }}
                   >
                     <span className="text-accent">{service.number}.</span>{" "}
                     {service.title}
@@ -216,30 +236,30 @@ export default function Services() {
                   <p
                     className="text-muted leading-relaxed"
                     style={{
-                      fontSize: "16px",
+                      fontSize: "clamp(13px, 1.5vw, 16px)",
                       maxWidth: "600px",
-                      marginBottom: "32px",
+                      marginBottom: "clamp(20px, 3vw, 32px)",
                     }}
                   >
                     {service.description}
                   </p>
 
-                  {/* Skills list */}
+                  {/* Skills list — always 2 columns */}
                   <ul
                     className="text-muted/70"
                     style={{
                       display: "grid",
                       gridTemplateColumns: "1fr 1fr",
-                      gap: "10px 40px",
+                      gap: "clamp(6px, 1.5vw, 10px) clamp(16px, 3vw, 40px)",
                       maxWidth: "600px",
-                      fontSize: "14px",
+                      fontSize: "clamp(11px, 1.3vw, 14px)",
                     }}
                   >
                     {service.items.map((item) => (
                       <li
                         key={item}
                         className="flex items-center"
-                        style={{ gap: "10px" }}
+                        style={{ gap: "8px" }}
                       >
                         <span
                           className="bg-accent rounded-full flex-shrink-0"
@@ -254,7 +274,7 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Right — Flip card */}
+          {/* Right — Flip card (desktop only, hidden on mobile via hidden lg:block inside FlipCard) */}
           <FlipCard />
         </div>
       </div>

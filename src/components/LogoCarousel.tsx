@@ -19,7 +19,12 @@ function LogoItem({ name, logo }: { name: string; logo: string }) {
     return (
       <div
         className="flex items-center justify-center shrink-0"
-        style={{ width: "160px", height: "48px", marginLeft: "40px", marginRight: "40px" }}
+        style={{
+          width: "clamp(100px, 14vw, 160px)",
+          height: "48px",
+          marginLeft: "clamp(20px, 4vw, 40px)",
+          marginRight: "clamp(20px, 4vw, 40px)",
+        }}
       >
         <Image
           src={`/logos/${logo}`}
@@ -27,7 +32,7 @@ function LogoItem({ name, logo }: { name: string; logo: string }) {
           width={160}
           height={48}
           className="object-contain opacity-40 hover:opacity-70 transition-opacity duration-500"
-          style={{ maxWidth: "160px", maxHeight: "48px" }}
+          style={{ maxWidth: "100%", maxHeight: "48px" }}
         />
       </div>
     );
@@ -37,9 +42,17 @@ function LogoItem({ name, logo }: { name: string; logo: string }) {
   return (
     <div
       className="flex items-center justify-center shrink-0"
-      style={{ width: "160px", height: "48px", marginLeft: "40px", marginRight: "40px" }}
+      style={{
+        width: "clamp(100px, 14vw, 160px)",
+        height: "48px",
+        marginLeft: "clamp(20px, 4vw, 40px)",
+        marginRight: "clamp(20px, 4vw, 40px)",
+      }}
     >
-      <span className="text-white/20 text-lg font-semibold tracking-wider uppercase whitespace-nowrap">
+      <span
+        className="text-white/20 font-semibold tracking-wider uppercase whitespace-nowrap"
+        style={{ fontSize: "clamp(13px, 1.5vw, 18px)" }}
+      >
         {name}
       </span>
     </div>
@@ -53,12 +66,15 @@ export default function LogoCarousel() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ paddingTop: "60px", paddingBottom: "60px" }}
+      style={{
+        paddingTop: "clamp(32px, 5vw, 60px)",
+        paddingBottom: "clamp(32px, 5vw, 60px)",
+      }}
     >
       {/* Label */}
       <p
         className="text-center text-muted text-xs font-mono tracking-[0.2em] uppercase"
-        style={{ marginBottom: "40px" }}
+        style={{ marginBottom: "clamp(24px, 3vw, 40px)" }}
       >
         Trusted by
       </p>
@@ -68,11 +84,17 @@ export default function LogoCarousel() {
         {/* Fade edges */}
         <div
           className="absolute left-0 top-0 bottom-0 z-10 pointer-events-none"
-          style={{ width: "120px", background: "linear-gradient(to right, #050505, transparent)" }}
+          style={{
+            width: "clamp(40px, 10vw, 120px)",
+            background: "linear-gradient(to right, var(--background), transparent)",
+          }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none"
-          style={{ width: "120px", background: "linear-gradient(to left, #050505, transparent)" }}
+          style={{
+            width: "clamp(40px, 10vw, 120px)",
+            background: "linear-gradient(to left, var(--background), transparent)",
+          }}
         />
 
         <motion.div
@@ -96,15 +118,19 @@ export default function LogoCarousel() {
 
       {/* Divider line */}
       <div
-        className="mx-auto"
+        className="section-container section-px"
         style={{
-          marginTop: "60px",
-          width: "100%",
-          maxWidth: "1600px",
-          height: "1px",
-          background: "linear-gradient(to right, transparent, var(--border), transparent)",
+          marginTop: "clamp(32px, 5vw, 60px)",
         }}
-      />
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "1px",
+            background: "linear-gradient(to right, transparent, var(--border), transparent)",
+          }}
+        />
+      </div>
     </section>
   );
 }

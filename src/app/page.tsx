@@ -17,15 +17,15 @@ export default function Home() {
       <Navbar />
       <Hero />
       <LogoCarousel />
-      <div style={{ height: "120px" }} />
+      <div className="section-spacer" />
       <About />
-      <div style={{ height: "200px" }} />
+      <div className="section-spacer" />
       <Projects />
-      <div style={{ height: "200px" }} />
+      <div className="section-spacer" />
       <Services />
-      <div style={{ height: "180px" }} />
+      <div style={{ height: "calc(var(--spacer) * 0.9)" }} />
       <Marquee />
-      <div style={{ height: "180px" }} />
+      <div style={{ height: "calc(var(--spacer) * 0.9)" }} />
       <Contact />
       <Footer />
     </SmoothScroll>

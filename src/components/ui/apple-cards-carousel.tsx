@@ -101,9 +101,9 @@ export function Carousel({ items }: { items: React.ReactElement[] }) {
           <div
             className="flex flex-row justify-start"
             style={{
-              gap: "20px",
-              paddingLeft: "max(112px, calc((100vw - 1600px) / 2 + 112px))",
-              paddingRight: "112px",
+              gap: "clamp(12px, 2vw, 20px)",
+              paddingLeft: "max(var(--px-section), calc((100vw - 1600px) / 2 + var(--px-section)))",
+              paddingRight: "var(--px-section)",
             }}
           >
             {items.map((item, index) => (
@@ -129,7 +129,7 @@ export function Carousel({ items }: { items: React.ReactElement[] }) {
         <div
           className="flex justify-end gap-2"
           style={{
-            paddingRight: "112px",
+            paddingRight: "var(--px-section)",
           }}
         >
           <button

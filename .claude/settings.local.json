@@ -52,7 +52,8 @@
       "WebFetch(domain:magicui.design)",
       "Bash(du -sh public/projects/*/ public/projects/*.jpg public/projects/*.png)",
       "Bash(find public/projects -type f -size +50M -exec ls -lh {} \\\\;)",
-      "Bash(sips --getProperty format public/projects/twins/playlists-page.png)"
+      "Bash(sips --getProperty format public/projects/twins/playlists-page.png)",
+      "Bash(gh api:*)"
     ]
   }
 }

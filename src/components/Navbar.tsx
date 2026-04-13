@@ -45,10 +45,9 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: isHidden && !isMobileOpen ? -150 : 0 }}
         transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{ paddingLeft: "112px", paddingRight: "112px" }}
+        className="fixed top-0 left-0 right-0 z-50 section-px"
       >
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between h-20 md:h-28 mt-4">
+        <div className="section-container flex items-center justify-between h-20 md:h-28 mt-4">
           {/* Logo — left */}
           <Link href="/" className="hover:opacity-70 transition-opacity duration-300 z-10 flex-shrink-0">
             <Image src="/logo-dark.png" alt="LM" width={52} height={52} className="invert" />
@@ -68,7 +67,7 @@ export default function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
-                  style={{ padding: "14px 32px", fontSize: "18px" }}
+                  style={{ padding: "clamp(10px, 1.5vw, 14px) clamp(16px, 2.5vw, 32px)", fontSize: "clamp(14px, 1.4vw, 18px)", whiteSpace: "nowrap" }}
                   className="text-muted hover:text-accent rounded-full hover:bg-white/[0.06] transition-all duration-300"
                 >
                   {item.label}

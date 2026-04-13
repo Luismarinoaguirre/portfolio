@@ -156,8 +156,7 @@ export function Terminal({
         className="font-mono"
         style={{
           padding: "24px 28px",
-          minHeight: "320px",
-          maxHeight: "420px",
+          height: "320px",
           overflowY: "auto",
           fontSize: "13px",
           lineHeight: "1.8",
