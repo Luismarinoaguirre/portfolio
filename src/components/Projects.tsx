@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import AnimatedText from "./AnimatedText";
@@ -34,6 +34,31 @@ export default function Projects() {
   // Map vertical scroll → horizontal movement
   const x = useTransform(scrollYProgress, [0.05, 0.95], [0, -maxScroll]);
 
+  // Arrow navigation: scroll the page to move horizontal track
+  const navigateCards = useCallback(
+    (direction: "prev" | "next") => {
+      if (!sectionRef.current) return;
+      const section = sectionRef.current;
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrollableRange = sectionHeight - window.innerHeight;
+
+      // Each card step = total scrollable range / number of projects
+      const step = scrollableRange / projects.length;
+      const currentScroll = window.scrollY - sectionTop;
+      const targetScroll =
+        direction === "next"
+          ? Math.min(currentScroll + step, scrollableRange)
+          : Math.max(currentScroll - step, 0);
+
+      window.scrollTo({
+        top: sectionTop + targetScroll,
+        behavior: "smooth",
+      });
+    },
+    []
+  );
+
   return (
     <section
       id="projects"
@@ -42,24 +67,100 @@ export default function Projects() {
     >
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        {/* Header */}
+        {/* Header with arrows */}
         <div className="section-px" style={{ marginBottom: "clamp(24px, 3vw, 48px)" }}>
           <div className="section-container">
-            <AnimatedText
-              text="Selected Work"
-              className="font-semibold tracking-[-0.02em]"
-              delay={0.1}
-              as="h2"
-              style={{ fontSize: "clamp(28px, 5vw, 60px)" }}
-            />
-            <FadeIn delay={0.2}>
-              <span
-                className="text-muted text-sm font-mono tracking-[0.1em] inline-block"
-                style={{ marginTop: "12px" }}
-              >
-                [{String(projects.length).padStart(2, "0")}]
-              </span>
-            </FadeIn>
+            <div className="flex items-end justify-between">
+              <div>
+                <AnimatedText
+                  text="Selected Work"
+                  className="font-semibold tracking-[-0.02em]"
+                  delay={0.1}
+                  as="h2"
+                  style={{ fontSize: "clamp(28px, 5vw, 60px)" }}
+                />
+                <FadeIn delay={0.2}>
+                  <span
+                    className="text-muted text-sm font-mono tracking-[0.1em] inline-block"
+                    style={{ marginTop: "12px" }}
+                  >
+                    [{String(projects.length).padStart(2, "0")}]
+                  </span>
+                </FadeIn>
+              </div>
+
+              {/* Arrow buttons */}
+              <FadeIn delay={0.3}>
+                <div className="flex items-center" style={{ gap: "12px" }}>
+                  <button
+                    onClick={() => navigateCards("prev")}
+                    className="group flex items-center justify-center rounded-full border transition-all duration-300"
+                    style={{
+                      width: "clamp(40px, 4vw, 56px)",
+                      height: "clamp(40px, 4vw, 56px)",
+                      borderColor: "rgba(235,235,235,0.2)",
+                      backgroundColor: "transparent",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.6)";
+                      e.currentTarget.style.backgroundColor = "rgba(235,235,235,0.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.2)";
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }}
+                    aria-label="Previous project"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-foreground/60 group-hover:text-foreground transition-colors duration-300"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => navigateCards("next")}
+                    className="group flex items-center justify-center rounded-full border transition-all duration-300"
+                    style={{
+                      width: "clamp(40px, 4vw, 56px)",
+                      height: "clamp(40px, 4vw, 56px)",
+                      borderColor: "rgba(235,235,235,0.2)",
+                      backgroundColor: "transparent",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.6)";
+                      e.currentTarget.style.backgroundColor = "rgba(235,235,235,0.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.2)";
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }}
+                    aria-label="Next project"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-foreground/60 group-hover:text-foreground transition-colors duration-300"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </div>
 

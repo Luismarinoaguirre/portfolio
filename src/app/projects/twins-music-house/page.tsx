@@ -3,386 +3,271 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Cormorant_Garamond, Space_Grotesk } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
+
+const cormorant = Cormorant_Garamond({ weight: ["300", "400", "600"], style: ["normal", "italic"], subsets: ["latin"], variable: "--font-display" });
+const spaceGrotesk = Space_Grotesk({ weight: ["300", "400", "500"], subsets: ["latin"], variable: "--font-body-project" });
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+    transition: { duration: 0.9, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 };
 
-const colors = [
-  { name: "Light Green", hex: "#0E630A" },
-  { name: "Pure White", hex: "#FFFFFF" },
-  { name: "Pure Black", hex: "#000000" },
-];
-
-const typeSizes = [
-  { size: "50px", rem: "2.488rem", weight: 400 },
-  { size: "41px", rem: "2.074rem", weight: 700 },
-  { size: "35px", rem: "1.728rem", weight: 700 },
-  { size: "29px", rem: "1.440rem", weight: 700 },
-  { size: "24px", rem: "1.200rem", weight: 700 },
-  { size: "20px", rem: "1rem", weight: 700 },
-  { size: "17px", rem: "0.833rem", weight: 700 },
-  { size: "14px", rem: "0.694rem", weight: 700 },
-];
+const TW = {
+  bg: "#060606",
+  bg2: "#0d0d0d",
+  fg: "#E8E8E2",
+  green: "#0E7A09",
+  muted: "#4a4a46",
+  border: "#141414",
+};
 
 export default function TwinsMusicHouse() {
   return (
     <SmoothScroll>
       <Navbar />
       <main
-        className="min-h-screen"
-        style={{ backgroundColor: "#1a1a1a", color: "#ebebeb" }}
+        className={`${cormorant.variable} ${spaceGrotesk.variable} min-h-screen`}
+        style={{ backgroundColor: TW.bg, color: TW.fg }}
       >
-        {/* Hero */}
-        <section style={{ padding: "160px 112px 80px" }}>
-          <div style={{ maxWidth: "1600px", marginLeft: "auto", marginRight: "auto" }}>
+
+        {/* ── Hero ── */}
+        <section
+          style={{
+            minHeight: "100vh",
+            display: "grid",
+            gridTemplateRows: "1fr auto",
+            padding: "0 112px 60px",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingTop: "160px", paddingBottom: "60px" }}>
+            <motion.div
+              style={{ width: "1px", height: "80px", background: `linear-gradient(to bottom, transparent, ${TW.green})`, marginBottom: "32px" }}
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ scaleY: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            />
             <motion.h1
-              className="font-bold text-center tracking-[-0.04em]"
-              style={{ fontSize: "clamp(48px, 8vw, 100px)" }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(64px, 10vw, 140px)",
+                fontWeight: 300,
+                lineHeight: 0.95,
+                letterSpacing: "-0.01em",
+                color: TW.fg,
+              }}
               initial="hidden"
               animate="visible"
               variants={fadeIn}
-              custom={0}
+              custom={0.5}
             >
-              Twins Website
+              Twins<br />
+              <em style={{ color: TW.green }}>Music</em><br />
+              House
             </motion.h1>
-
-            <motion.div
-              className="flex justify-between items-start"
-              style={{ marginTop: "48px" }}
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              custom={0.2}
-            >
-              {/* Left — metadata */}
-              <div>
-                <p style={{ fontSize: "16px" }}>
-                  <span className="font-semibold">Project type</span>
-                  <span className="text-muted">: UX/UI Design.</span>
-                </p>
-                <p style={{ fontSize: "16px", marginTop: "4px" }}>
-                  <span className="font-semibold">Date</span>
-                  <span className="text-muted">: 2020.</span>
-                </p>
-              </div>
-
-              {/* Right — logo */}
-              <p
-                className="italic"
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "serif",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                <span className="font-bold not-italic" style={{ fontFamily: "serif" }}>
-                  Twins
-                </span>{" "}
-                <span style={{ fontSize: "14px", fontWeight: 300 }}>
-                  AudioBranding
-                </span>
-              </p>
-            </motion.div>
-
-            {/* Description */}
-            <motion.div
-              style={{ marginTop: "48px", maxWidth: "800px", marginLeft: "auto", marginRight: "auto" }}
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              custom={0.3}
-            >
-              <p className="text-muted" style={{ fontSize: "16px", lineHeight: "1.8" }}>
-                <span className="font-semibold text-foreground">Project description</span>: In this project, Twins Music House, an international creative music agency offering sonic branding, music composition and music production for advertising, sought to set up its web channel to be able to show itself in the market. Different types of graphic designs were created for their different areas and were assembled based on the user&apos;s needs.
-              </p>
-            </motion.div>
           </div>
+
+          <motion.div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: "40px",
+              borderTop: `1px solid ${TW.border}`,
+              paddingTop: "32px",
+            }}
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            custom={0.9}
+          >
+            {[
+              ["Type", "Landing Page"],
+              ["Role", "UX/UI Design"],
+            ].map(([label, val]) => (
+              <div key={label}>
+                <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: TW.muted, fontFamily: "var(--font-body-project)", marginBottom: "8px" }}>{label}</p>
+                <p style={{ fontSize: "15px", fontWeight: 300, color: TW.fg, fontFamily: "var(--font-body-project)" }}>{val}</p>
+              </div>
+            ))}
+            <div>
+              <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: TW.muted, fontFamily: "var(--font-body-project)", marginBottom: "8px" }}>About</p>
+              <p style={{ fontSize: "14px", lineHeight: "1.8", color: TW.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}>
+                International creative music agency — sonic branding, composition and production for advertising.
+              </p>
+            </div>
+          </motion.div>
         </section>
 
-        {/* iMac Mockup — video will go here later */}
+        {/* ── iMac Mockup ── */}
+        <section style={{ padding: "0 112px 120px", background: TW.bg2 }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", paddingTop: "80px", marginBottom: "20px" }}>Web Design</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "48px" }}>
+              iMac <em style={{ color: TW.green }}>Presentation</em>
+            </h2>
+            <div style={{ borderRadius: "4px", overflow: "hidden", border: `1px solid ${TW.border}`, position: "relative" }}>
+              <Image src="/projects/twins/mockup.png" alt="Twins Music House — iMac" width={1400} height={1050} className="w-full h-auto" style={{ filter: "brightness(0.92)" }} />
+              <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 70%, ${TW.bg2} 100%)`, pointerEvents: "none" }} />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── Other Pages Split ── */}
+        <section style={{ padding: "120px 112px" }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", marginBottom: "20px" }}>Interior Pages</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "60px" }}>
+              Navigation &amp; <em style={{ color: TW.green }}>Content</em>
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+              <div style={{ borderRadius: "4px", overflow: "hidden", border: `1px solid ${TW.border}` }}>
+                <Image src="/projects/twins/other-pages.png" alt="Twins — Other pages" width={700} height={2100} className="w-full h-auto" style={{ filter: "brightness(0.9)" }} />
+              </div>
+              <div style={{ paddingTop: "40px", display: "flex", flexDirection: "column", gap: "32px" }}>
+                {[
+                  "Each interior page maintains visual coherence while serving a distinct purpose — from event listings to artist profiles. The grid system ensures consistency at every depth of navigation.",
+                  "Content containers were designed with a related content rail that keeps users within the same section, reducing navigation friction and increasing session depth.",
+                  "The unified channel approach merges three distinct content areas into a single, flowing experience — connecting live events, productions, and editorial in one cohesive environment.",
+                ].map((text, i) => (
+                  <p key={i} style={{ fontSize: "15px", lineHeight: "1.9", color: TW.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}>{text}</p>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── Playlists ── */}
+        <section style={{ padding: "0 112px 120px", background: TW.bg2 }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", paddingTop: "80px", marginBottom: "20px" }}>Playlists</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "60px" }}>
+              Curated <em style={{ color: TW.green }}>Listening</em>
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "24px", paddingTop: "40px" }}>
+                <p style={{ fontSize: "15px", lineHeight: "1.9", color: TW.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}>
+                  The playlists section gives visitors immediate access to the agency&apos;s sonic identity — curated listening experiences organized by mood, project type, and genre.
+                </p>
+                <p style={{ fontSize: "15px", lineHeight: "1.9", color: TW.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}>
+                  Faculty profiles were embedded within this section, providing artistic context and establishing the credibility of the musical vision behind each curation.
+                </p>
+              </div>
+              <div style={{ borderRadius: "4px", overflow: "hidden", border: `1px solid ${TW.border}` }}>
+                <Image src="/projects/twins/playlists-page.png" alt="Twins — Playlists" width={700} height={1400} className="w-full h-auto" style={{ filter: "brightness(0.9)" }} />
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── Color Palette ── */}
+        <section style={{ padding: "120px 112px" }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", marginBottom: "20px" }}>Brand Identity</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "48px" }}>Color</h2>
+            <div style={{ display: "flex", height: "200px", borderRadius: "4px", overflow: "hidden" }}>
+              {[
+                { name: "Light Green", hex: "#0E630A", text: "#fff" },
+                { name: "Pure White", hex: "#FFFFFF", text: "#060606" },
+                { name: "Pure Black", hex: "#000000", text: TW.fg },
+              ].map((c) => (
+                <div key={c.name} style={{ flex: 1, background: c.hex, color: c.text, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "20px", transition: "flex 0.4s ease", border: c.hex === "#000000" ? `1px solid ${TW.border}` : undefined }}>
+                  <span style={{ fontSize: "13px", fontWeight: 500, fontFamily: "var(--font-body-project)", marginBottom: "2px" }}>{c.name}</span>
+                  <span style={{ fontSize: "11px", fontFamily: "monospace", opacity: 0.6 }}>{c.hex}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── Typography ── */}
+        <section style={{ padding: "0 112px 120px", background: TW.bg2 }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", paddingTop: "80px", marginBottom: "20px" }}>Type System</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "48px" }}>
+              Arial — <em style={{ color: TW.green }}>Functional</em>
+            </h2>
+            <div style={{ borderTop: `1px solid ${TW.border}` }}>
+              {[
+                { size: "48px", weight: 400, text: "Twins Music House", label: "48px · Regular" },
+                { size: "32px", weight: 700, text: "Sonic Branding Agency", label: "32px · Bold" },
+                { size: "22px", weight: 400, text: "Music Composition & Production", label: "22px · Regular" },
+                { size: "15px", weight: 300, text: "Clean, legible, and universal — Arial provides a neutral foundation.", label: "15px · Light", muted: true },
+              ].map((row) => (
+                <div key={row.label} style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "28px 0", borderBottom: `1px solid ${TW.border}`, gap: "24px" }}>
+                  <span style={{ fontFamily: "Arial, sans-serif", fontSize: row.size, fontWeight: row.weight, color: row.muted ? TW.muted : TW.fg, flex: 1 }}>{row.text}</span>
+                  <span style={{ fontSize: "10px", letterSpacing: "0.12em", fontFamily: "monospace", color: TW.muted, whiteSpace: "nowrap" }}>{row.label}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ── Closing ── */}
         <motion.section
-          style={{ padding: "0 112px 120px" }}
+          style={{ minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "120px 112px", position: "relative", overflow: "hidden" }}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           variants={fadeIn}
           custom={0.1}
         >
-          <div style={{ maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
-            <div className="relative">
-              <Image
-                src="/projects/twins/mockup.png"
-                alt="Twins Music House — iMac Mockup"
-                width={900}
-                height={750}
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
+          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle 400px at 50% 50%, rgba(14,122,9,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(64px, 10vw, 130px)", fontWeight: 300, lineHeight: 1, color: TW.fg, letterSpacing: "-0.01em", position: "relative" }}>
+            Sound<br />finds<br /><em style={{ color: TW.green }}>form.</em>
+          </h2>
+          <p style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: TW.muted, marginTop: "28px", fontFamily: "var(--font-body-project)", position: "relative" }}>
+            Twins Music House · 2023
+          </p>
         </motion.section>
 
-        {/* Other Pages */}
-        <section style={{ padding: "0 112px 120px" }}>
-          <div style={{ maxWidth: "1600px", marginLeft: "auto", marginRight: "auto" }}>
-            <motion.h2
-              className="font-semibold text-center"
-              style={{ fontSize: "32px", marginBottom: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              custom={0}
-            >
-              Other Pages
-            </motion.h2>
-
-            <motion.div
-              className="flex items-start"
-              style={{ gap: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              custom={0.1}
-            >
-              {/* Screenshot */}
-              <div className="flex-1 rounded-2xl overflow-hidden" style={{ backgroundColor: "#111111" }}>
-                <Image
-                  src="/projects/twins/other-pages.png"
-                  alt="Twins — Website pages overview"
-                  width={800}
-                  height={2400}
-                  className="w-full h-auto"
-                />
-              </div>
-              {/* Annotations */}
-              <div className="flex-1 flex flex-col justify-between" style={{ gap: "60px", paddingTop: "40px" }}>
-                <p className="text-muted" style={{ fontSize: "16px", lineHeight: "1.8" }}>
-                  Aquí podemos observar el interior de uno de los contenedores de la web. Dentro de una misma sección los contenidos tienen un mismo estilo y diseño, con una misma coherencia.
-                </p>
-                <p className="text-muted" style={{ fontSize: "16px", lineHeight: "1.8" }}>
-                  Estos rectángulos que vemos debajo de la página es la sección de &quot;Contenido relacionado&quot;, diseñado para que el usuario no tenga que salir del contenedor y poder seguir navegando en la web.
-                </p>
-                <p className="text-muted" style={{ fontSize: "16px", lineHeight: "1.8" }}>
-                  Aquí podemos observar como se unificaron los tres canales en uno solo, separado en secciones que nos conducen a cada area con sus eventos mas destacados.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Playlists Section */}
-        <section style={{ padding: "0 112px 120px" }}>
-          <div style={{ maxWidth: "1600px", marginLeft: "auto", marginRight: "auto" }}>
-            <motion.h2
-              className="font-semibold text-center"
-              style={{ fontSize: "32px", marginBottom: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              custom={0}
-            >
-              Playlists
-            </motion.h2>
-
-            <motion.div
-              className="flex items-start"
-              style={{ gap: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              custom={0.1}
-            >
-              <div className="flex-1 flex items-center" style={{ minHeight: "400px" }}>
-                <p className="text-muted" style={{ fontSize: "16px", lineHeight: "1.8" }}>
-                  A continuación tenemos la sección de los docentes donde nos conduce a cada uno de sus perfiles con sus respectivas descripciones.
-                </p>
-              </div>
-              <div className="flex-1 rounded-2xl overflow-hidden" style={{ backgroundColor: "#111111" }}>
-                <Image
-                  src="/projects/twins/playlists-page.png"
-                  alt="Twins — Playlists page"
-                  width={800}
-                  height={1600}
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Color Palette */}
-        <section style={{ padding: "0 112px 120px" }}>
-          <div style={{ maxWidth: "1600px", marginLeft: "auto", marginRight: "auto" }}>
-            <motion.h2
-              className="font-semibold text-center"
-              style={{ fontSize: "32px", marginBottom: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              custom={0}
-            >
-              Color Palette
-            </motion.h2>
-
-            <motion.div
-              className="flex justify-center"
-              style={{ gap: "40px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              custom={0.1}
-            >
-              {colors.map((color) => (
-                <div key={color.name} className="flex flex-col items-center" style={{ gap: "16px" }}>
-                  <div
-                    className="rounded-2xl"
-                    style={{
-                      width: "160px",
-                      height: "160px",
-                      backgroundColor: color.hex,
-                      border: color.hex === "#000000" || color.hex === "#0E630A"
-                        ? "1px solid #222222"
-                        : "none",
-                    }}
-                  />
-                  <span className="font-medium" style={{ fontSize: "14px" }}>
-                    {color.name}
-                  </span>
-                  <span className="text-muted font-mono" style={{ fontSize: "12px" }}>
-                    {color.hex}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Typography */}
-        <section style={{ padding: "0 112px 120px" }}>
-          <div style={{ maxWidth: "1600px", marginLeft: "auto", marginRight: "auto" }}>
-            <motion.h2
-              className="font-semibold text-center"
-              style={{ fontSize: "32px", marginBottom: "60px" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              custom={0}
-            >
-              Typography
-            </motion.h2>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              custom={0.1}
-            >
-              {/* Font info */}
-              <div
-                className="flex justify-between"
-                style={{ marginBottom: "48px", gap: "40px" }}
-              >
-                <div className="flex-1">
-                  <p className="text-muted" style={{ fontSize: "15px", lineHeight: "1.8" }}>
-                    Arial, a veces también conocida como Arial MT, es una tipografía sans serif contemporánea.
-                  </p>
-                </div>
-                <div className="flex-1">
-                  <p className="text-muted" style={{ fontSize: "15px", lineHeight: "1.8" }}>
-                    Estilo Funcional y Simple: Arial tiene un estilo funcional y simple, lo que la hace adecuada para una variedad de aplicaciones.
-                  </p>
-                </div>
-              </div>
-
-              {/* Type scale */}
-              <div
-                className="rounded-2xl"
-                style={{
-                  backgroundColor: "#e8e8e8",
-                  padding: "48px 40px",
-                }}
-              >
-                <p
-                  className="text-center font-medium"
-                  style={{
-                    fontSize: "18px",
-                    color: "#333333",
-                    marginBottom: "32px",
-                  }}
-                >
-                  Arial
-                </p>
-                <div className="flex flex-col" style={{ gap: "16px" }}>
-                  {typeSizes.map((type) => (
-                    <p
-                      key={type.size}
-                      style={{
-                        fontSize: type.size,
-                        fontWeight: type.weight,
-                        fontFamily: "Arial, sans-serif",
-                        color: "#111111",
-                        lineHeight: "1.3",
-                      }}
-                    >
-                      The quick brown fox jumps over the lazy dog ({type.rem}/{type.size})
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              {/* Legibility note */}
-              <div style={{ marginTop: "48px", maxWidth: "500px", marginLeft: "auto", marginRight: "auto" }}>
-                <p className="text-muted text-center" style={{ fontSize: "15px", lineHeight: "1.8" }}>
-                  Legibilidad: Debido a su diseño limpio y sin adornos, Arial es muy legible tanto en tamaños pequeños como grandes.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Next Project / Back */}
-        <section style={{ padding: "40px 112px 80px" }}>
-          <div
-            className="flex justify-between items-center"
-            style={{
-              maxWidth: "1600px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              borderTop: "1px solid #1a1a1a",
-              paddingTop: "40px",
-            }}
-          >
-            <Link
-              href="/"
-              className="text-muted hover:text-foreground transition-colors"
-              style={{ fontSize: "16px" }}
-            >
+        {/* ── Navigation ── */}
+        <section style={{ padding: "40px 112px 80px", borderTop: `1px solid ${TW.border}` }}>
+          <div className="flex justify-between items-center">
+            <Link href="/" style={{ fontSize: "16px", color: TW.muted }}>
               &larr; Back to Home
             </Link>
-            <Link
-              href="/projects/tresor"
-              className="text-muted hover:text-accent transition-colors"
-              style={{ fontSize: "16px" }}
-            >
+            <Link href="/projects/tresor" style={{ fontSize: "16px", color: TW.green }}>
               Next Project &rarr;
             </Link>
           </div>
         </section>
+
       </main>
     </SmoothScroll>
   );

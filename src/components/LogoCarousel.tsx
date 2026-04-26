@@ -6,12 +6,14 @@ import Image from "next/image";
 // ── Update this list when you add real logos to /public/logos/ ──
 // Set `logo` to the filename (e.g., "future-infinit.svg") once available.
 const brands = [
-  { name: "Company 1", logo: "" },
-  { name: "Company 2", logo: "" },
-  { name: "Company 3", logo: "" },
-  { name: "Company 4", logo: "" },
-  { name: "Company 5", logo: "" },
-  { name: "Company 6", logo: "" },
+  { name: "Brand 1", logo: "logo-01.svg" },
+  { name: "Brand 2", logo: "logo-02.svg" },
+  { name: "Brand 3", logo: "logo-03.svg" },
+  { name: "Brand 4", logo: "logo-04.svg" },
+  { name: "Brand 5", logo: "logo-05.svg" },
+  { name: "Brand 6", logo: "logo-06.svg" },
+  { name: "Brand 7", logo: "logo-07.svg" },
+  { name: "Brand 8", logo: "logo-08.svg" },
 ];
 
 function LogoItem({ name, logo }: { name: string; logo: string }) {
