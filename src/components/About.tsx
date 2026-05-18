@@ -5,7 +5,36 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import AnimatedText from "./AnimatedText";
 import FadeIn from "./FadeIn";
-import { Terminal } from "./ui/terminal";
+
+function Pill({ label }: { label: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "6px",
+        padding: "6px 12px",
+        borderRadius: "999px",
+        border: "1px solid var(--border)",
+        fontSize: "13px",
+        color: "var(--foreground)",
+        background: "var(--glass-soft)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span
+        style={{
+          width: "6px",
+          height: "6px",
+          borderRadius: "50%",
+          background: "var(--accent)",
+          flexShrink: 0,
+        }}
+      />
+      {label}
+    </span>
+  );
+}
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -42,14 +71,13 @@ export default function About() {
         </FadeIn>
       </div>
 
-      {/* Part 2: Photo with name overlay — like "Hello, I'm Simon" */}
+      {/* Part 2: Photo with name overlay */}
       <div className="section-px">
         <div className="section-container">
           <div
             className="relative flex flex-col items-center"
             style={{ minHeight: "clamp(400px, 70vw, 950px)" }}
           >
-
             {/* Photo — large, centered, rises on scroll */}
             <motion.div
               className="relative mx-auto overflow-hidden"
@@ -69,12 +97,12 @@ export default function About() {
                 className="object-contain object-bottom"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 900px"
               />
-              {/* Bottom gradient fade to black */}
+              {/* Bottom gradient fade to background */}
               <div
                 className="absolute bottom-0 left-0 right-0"
                 style={{
                   height: "250px",
-                  background: "linear-gradient(to top, #1a1a1a 0%, transparent 100%)",
+                  background: "linear-gradient(to top, var(--background) 0%, transparent 100%)",
                 }}
               />
             </motion.div>
@@ -107,7 +135,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Part 3: Terminal — centered */}
+      {/* Part 3: Manifesto card */}
       <div
         style={{ paddingTop: "clamp(48px, 6vw, 80px)", paddingBottom: "clamp(64px, 8vw, 120px)" }}
       >
@@ -122,52 +150,153 @@ export default function About() {
           }}
         >
           <FadeIn delay={0.1}>
-            <Terminal
-              commands={[
-                "cat 01_Core.Capabilities",
-                "cat 02_Identity",
-                "cat 03_Skill.Stack",
-              ]}
-              outputs={{
-                0: [
-                  "UX Design",
-                  "UI Design",
-                  "Product Design",
-                  "Graphic Design",
-                  "Industrial Design",
-                  "Prototyping",
-                ],
-                1: [
-                  "Designing with clarity, intention, and a",
-                  "user-first approach to create meaningful",
-                  "digital products.",
-                ],
-                2: [
-                  "Figma",
-                  "Adobe Suite",
-                  "Framer",
-                  "Next.js",
-                  "Tailwind CSS",
-                  "Framer Motion",
-                ],
+            <div
+              style={{
+                background: "var(--card-bg)",
+                border: "1px solid var(--border)",
+                borderRadius: "24px",
+                overflow: "hidden",
               }}
-              typingSpeed={40}
-              delayBetweenCommands={1200}
-            />
+            >
+              {/* CAPABILITIES row */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "140px 1fr",
+                  borderBottom: "1px solid var(--border)",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "28px 24px",
+                    borderRight: "1px solid var(--border)",
+                    display: "flex",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontFamily: "var(--font-mono)",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    Capabilities
+                  </span>
+                </div>
+                <div
+                  style={{
+                    padding: "24px 28px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                    alignContent: "flex-start",
+                  }}
+                >
+                  {["UX Design", "UI Design", "Product Design", "Graphic Design", "Industrial Design", "Prototyping"].map((label) => (
+                    <Pill key={label} label={label} />
+                  ))}
+                </div>
+              </div>
+
+              {/* IDENTITY row */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "140px 1fr",
+                  borderBottom: "1px solid var(--border)",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "28px 24px",
+                    borderRight: "1px solid var(--border)",
+                    display: "flex",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontFamily: "var(--font-mono)",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    Identity
+                  </span>
+                </div>
+                <div style={{ padding: "28px 28px" }}>
+                  <p
+                    style={{
+                      fontSize: "clamp(14px, 1.5vw, 16px)",
+                      color: "var(--foreground)",
+                      fontStyle: "italic",
+                      lineHeight: "1.65",
+                    }}
+                  >
+                    Designing with clarity, intention, and a user-first approach to create meaningful digital products.
+                  </p>
+                </div>
+              </div>
+
+              {/* STACK row */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "140px 1fr",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "28px 24px",
+                    borderRight: "1px solid var(--border)",
+                    display: "flex",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontFamily: "var(--font-mono)",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                    }}
+                  >
+                    Stack
+                  </span>
+                </div>
+                <div
+                  style={{
+                    padding: "24px 28px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                    alignContent: "flex-start",
+                  }}
+                >
+                  {["Figma", "Adobe Suite", "Framer", "Next.js", "Tailwind CSS", "Framer Motion"].map((label) => (
+                    <Pill key={label} label={label} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </FadeIn>
 
           {/* Statement */}
           <FadeIn delay={0.3}>
             <p
-              className="text-foreground/90 font-semibold uppercase text-center"
+              className="text-foreground font-semibold uppercase text-center"
               style={{
                 fontSize: "clamp(13px, 1.4vw, 16px)",
                 letterSpacing: "0.04em",
                 lineHeight: "1.7",
                 marginTop: "clamp(48px, 6vw, 80px)",
-                maxWidth: "600px",
-                marginLeft: "auto",
-                marginRight: "auto",
+                opacity: 0.9,
               }}
             >
               I turn ideas into digital products with purpose, clarity, and edge.

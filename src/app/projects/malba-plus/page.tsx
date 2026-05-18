@@ -25,14 +25,14 @@ const MA = {
 };
 
 const typeSizes = [
-  { size: "50px", rem: "2.488rem", weight: 400 },
-  { size: "41px", rem: "2.074rem", weight: 700 },
-  { size: "35px", rem: "1.728rem", weight: 700 },
-  { size: "29px", rem: "1.440rem", weight: 700 },
-  { size: "24px", rem: "1.200rem", weight: 700 },
-  { size: "20px", rem: "1rem",     weight: 700 },
-  { size: "17px", rem: "0.833rem", weight: 700 },
-  { size: "14px", rem: "0.694rem", weight: 700 },
+  { label: "Display", size: "50px", weight: 400,  specs: "50 / Regular" },
+  { label: "H1",      size: "41px", weight: 700,  specs: "41 / Bold" },
+  { label: "H2",      size: "35px", weight: 700,  specs: "35 / Bold" },
+  { label: "H3",      size: "29px", weight: 700,  specs: "29 / Bold" },
+  { label: "H4",      size: "24px", weight: 600,  specs: "24 / Semibold" },
+  { label: "Lead",    size: "20px", weight: 500,  specs: "20 / Medium" },
+  { label: "Body",    size: "17px", weight: 400,  specs: "17 / Regular" },
+  { label: "Caption", size: "14px", weight: 400,  specs: "14 / Regular" },
 ];
 
 export default function MalbaPlus() {
@@ -259,11 +259,42 @@ export default function MalbaPlus() {
               <div style={{ background: MA.navy, padding: "16px 28px", textAlign: "center" }}>
                 <span style={{ fontFamily: "Arial, sans-serif", fontSize: "18px", fontWeight: 700, color: "#fff", letterSpacing: "0.08em" }}>Arial</span>
               </div>
-              <div style={{ background: "#f0f0f0", padding: "36px 28px" }}>
-                {typeSizes.map((t) => (
-                  <p key={t.size} style={{ fontFamily: "Arial, sans-serif", fontSize: t.size, fontWeight: t.weight, color: MA.navy, lineHeight: "1.4", paddingBottom: "6px" }}>
-                    The quick brown fox jumps over the lazy dog ({t.rem}/{t.size})
-                  </p>
+              <div style={{ background: "#f5f5f5", borderRadius: 0, overflow: "hidden" }}>
+                {typeSizes.map((t, i) => (
+                  <div
+                    key={t.size}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "110px 1fr 160px",
+                      alignItems: "baseline",
+                      gap: "32px",
+                      padding: "18px 28px",
+                      borderTop: i === 0 ? "none" : "1px solid rgba(0,32,96,0.08)",
+                    }}
+                  >
+                    <span style={{ fontFamily: "var(--font-body-project)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: MA.navy, opacity: 0.55 }}>
+                      {t.label}
+                    </span>
+                    <p
+                      style={{
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: t.size,
+                        fontWeight: t.weight,
+                        color: MA.navy,
+                        lineHeight: 1.15,
+                        margin: 0,
+                        padding: 0,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Arte sin fronteras
+                    </p>
+                    <span style={{ fontFamily: "var(--font-body-project)", fontSize: "12px", color: MA.muted, textAlign: "right", letterSpacing: "0.04em" }}>
+                      {t.specs}
+                    </span>
+                  </div>
                 ))}
               </div>
               <div style={{ padding: "20px 28px", textAlign: "center", background: "#fff", border: `1px solid ${MA.border}`, borderTop: "none", borderRadius: "0 0 8px 8px" }}>

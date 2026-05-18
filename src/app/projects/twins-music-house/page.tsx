@@ -117,9 +117,21 @@ export default function TwinsMusicHouse() {
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "48px" }}>
               iMac <em style={{ color: TW.green }}>Presentation</em>
             </h2>
-            <div style={{ borderRadius: "4px", overflow: "hidden", border: `1px solid ${TW.border}`, position: "relative" }}>
-              <Image src="/projects/twins/mockup.png" alt="Twins Music House — iMac" width={1400} height={1050} className="w-full h-auto" style={{ filter: "brightness(0.92)" }} />
-              <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 70%, ${TW.bg2} 100%)`, pointerEvents: "none" }} />
+            <div style={{ width: "100%", overflow: "hidden", position: "relative" }}>
+              <Image
+                src="/projects/twins/mockup.png"
+                alt="Twins Music House — iMac"
+                width={1400}
+                height={1050}
+                className="w-full h-auto"
+                style={{
+                  display: "block",
+                  WebkitMaskImage: "linear-gradient(to bottom, transparent 0, #000 4%, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 2%, #000 98%, transparent 100%)",
+                  WebkitMaskComposite: "source-in",
+                  maskImage: "linear-gradient(to bottom, transparent 0, #000 4%, #000 88%, transparent 100%), linear-gradient(to right, transparent 0, #000 2%, #000 98%, transparent 100%)",
+                  maskComposite: "intersect",
+                } as React.CSSProperties}
+              />
             </div>
           </motion.div>
         </section>
@@ -198,7 +210,7 @@ export default function TwinsMusicHouse() {
               {[
                 { name: "Light Green", hex: "#0E630A", text: "#fff" },
                 { name: "Pure White", hex: "#FFFFFF", text: "#060606" },
-                { name: "Pure Black", hex: "#000000", text: TW.fg },
+                { name: "Near Black", hex: "#0E0E0E", text: TW.fg },
               ].map((c) => (
                 <div key={c.name} style={{ flex: 1, background: c.hex, color: c.text, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "20px", transition: "flex 0.4s ease", border: c.hex === "#000000" ? `1px solid ${TW.border}` : undefined }}>
                   <span style={{ fontSize: "13px", fontWeight: 500, fontFamily: "var(--font-body-project)", marginBottom: "2px" }}>{c.name}</span>

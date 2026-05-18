@@ -35,6 +35,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        {/* Pre-paint theme: prevents FOUC by reading localStorage before first render */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();`,
+          }}
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

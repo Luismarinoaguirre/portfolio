@@ -19,8 +19,8 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-px">
-      {/* Sparkles background */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* Sparkles — hidden in light mode via CSS (.hero-sparkles-wrap) */}
+      <div className="hero-sparkles-wrap absolute inset-0 w-full h-full">
         <SparklesCore
           id="hero-sparkles"
           background="transparent"
@@ -34,11 +34,17 @@ export default function Hero() {
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 20%, var(--background) 80%)",
+            background: "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 20%, var(--background) 80%)",
           }}
         />
       </div>
+      {/* Ambient glow — navy in light mode, hidden in dark */}
+      <div
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 70% 55% at 50% 45%, rgba(var(--accent-rgb, 0,51,160), 0.12), transparent 60%)",
+        }}
+      />
 
       <div className="section-container w-full text-center relative z-20">
         {/* Role tag */}

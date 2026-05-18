@@ -1,18 +1,54 @@
 @import "tailwindcss";
 
+/* ── Light theme (default) ── */
 :root {
-  --background: #1a1a1a;
-  --foreground: #ebebeb;
-  --accent: #FFD000;
-  --muted: #777777;
-  --card-bg: #111111;
-  --border: #1a1a1a;
-  --hover-bg: #0d0d0d;
+  --background: #f5f4ef;
+  --foreground: #1a1a1a;
+  --accent: #0033A0;
+  --accent-rgb: 0, 51, 160;
+  --muted: #6b6b6b;
+  --card-bg: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --hover-bg: #efeee8;
+  --hairline: rgba(0, 0, 0, 0.07);
+  --glass: rgba(0, 0, 0, 0.04);
+  --glass-strong: rgba(0, 0, 0, 0.07);
+  --glass-soft: rgba(0, 0, 0, 0.03);
+  --glass-hover: rgba(0, 0, 0, 0.05);
+  --logo-color: rgba(0, 0, 0, 0.35);
+  --logo-color-hover: rgba(0, 0, 0, 0.65);
+  --fg-20: rgba(26, 26, 26, 0.2);
+  --fg-60: rgba(26, 26, 26, 0.6);
+  --nav-btn-hover: rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 16px 40px -16px rgba(0, 0, 0, 0.18);
 
-  /* Responsive padding system */
+  /* Responsive spacing */
   --px-section: 20px;
   --py-section: 80px;
   --spacer: 100px;
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  --background: #1a1a1a;
+  --foreground: #ebebeb;
+  --accent: #FFD000;
+  --accent-rgb: 255, 208, 0;
+  --muted: #777777;
+  --card-bg: #111111;
+  --border: rgba(255, 255, 255, 0.08);
+  --hover-bg: #0d0d0d;
+  --hairline: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-strong: rgba(255, 255, 255, 0.10);
+  --glass-soft: rgba(255, 255, 255, 0.04);
+  --glass-hover: rgba(255, 255, 255, 0.06);
+  --logo-color: rgba(255, 255, 255, 0.35);
+  --logo-color-hover: rgba(255, 255, 255, 0.7);
+  --fg-20: rgba(235, 235, 235, 0.2);
+  --fg-60: rgba(235, 235, 235, 0.6);
+  --nav-btn-hover: rgba(235, 235, 235, 0.05);
+  --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 640px) {
@@ -68,6 +104,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: url('/cursor.svg') 16 16, crosshair;
+  transition: background-color 0.45s ease, color 0.45s ease;
 }
 
 a, button, canvas, div {
@@ -90,16 +127,18 @@ a, button, canvas, div {
   height: var(--spacer);
 }
 
-/* Services section — 1 column on mobile, 2 columns on desktop */
-.services-layout {
-  flex-direction: column;
+/* Sparkles hidden in light mode */
+.hero-sparkles-wrap {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+[data-theme="dark"] .hero-sparkles-wrap {
+  opacity: 1;
 }
 
-@media (min-width: 1024px) {
-  .services-layout {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+/* Services section — single column always */
+.services-layout {
+  flex-direction: column;
 }
 
 /* Apple Cards Carousel — responsive card sizes */
