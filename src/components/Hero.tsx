@@ -18,7 +18,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-px">
+    <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden section-px">
       {/* Sparkles — hidden in light mode via CSS (.hero-sparkles-wrap) */}
       <div className="hero-sparkles-wrap absolute inset-0 w-full h-full">
         <SparklesCore
@@ -60,18 +60,15 @@ export default function Hero() {
         {/* Main heading */}
         <FadeIn delay={0.5}>
           <h1
-            className="font-bold leading-[1.05] tracking-[-0.03em] text-foreground"
-            style={{
-              fontSize: "clamp(2rem, 6vw, 5.5rem)",
-              marginBottom: "clamp(20px, 3vw, 32px)",
-            }}
+            className="leading-[1.05] tracking-[-0.03em] text-foreground"
+            style={{ fontWeight: 800, fontSize: "clamp(2rem, 6vw, 5.5rem)", marginBottom: "clamp(20px, 3vw, 32px)" }}
           >
             Designing digital
             <br />
             experiences that{" "}
             <span
               className="relative inline-flex justify-start"
-              style={{ width: "clamp(110px, 20vw, 340px)", verticalAlign: "baseline" }}
+              style={{ width: "clamp(140px, 22vw, 360px)", verticalAlign: "baseline" }}
             >
               <AnimatePresence mode="wait">
                 <motion.span

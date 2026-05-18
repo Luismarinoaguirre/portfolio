@@ -1,59 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 // ── Update this list when you add real logos to /public/logos/ ──
 // Set `logo` to the filename (e.g., "future-infinit.svg") once available.
 const brands = [
-  { name: "Brand 1", logo: "logo-01.svg" },
-  { name: "Brand 2", logo: "logo-02.svg" },
-  { name: "Brand 3", logo: "logo-03.svg" },
-  { name: "Brand 4", logo: "logo-04.svg" },
-  { name: "Brand 5", logo: "logo-05.svg" },
-  { name: "Brand 6", logo: "logo-06.svg" },
-  { name: "Brand 7", logo: "logo-07.svg" },
-  { name: "Brand 8", logo: "logo-08.svg" },
+  { name: "Future Infinit" },
+  { name: "Daly Nosh" },
+  { name: "MALBA+" },
+  { name: "Family" },
+  { name: "Twins Music" },
+  { name: "Tresor" },
+  { name: "Atelier" },
+  { name: "Northwood" },
 ];
 
-function LogoItem({ name, logo }: { name: string; logo: string }) {
-  if (logo) {
-    return (
-      <div
-        className="flex items-center justify-center shrink-0"
-        style={{
-          width: "clamp(100px, 14vw, 160px)",
-          height: "48px",
-          marginLeft: "clamp(20px, 4vw, 40px)",
-          marginRight: "clamp(20px, 4vw, 40px)",
-        }}
-      >
-        <Image
-          src={`/logos/${logo}`}
-          alt={name}
-          width={160}
-          height={48}
-          className="object-contain opacity-40 hover:opacity-70 transition-opacity duration-500"
-          style={{ maxWidth: "100%", maxHeight: "48px" }}
-        />
-      </div>
-    );
-  }
-
-  // Text placeholder
+function LogoItem({ name }: { name: string }) {
   return (
     <div
       className="flex items-center justify-center shrink-0"
       style={{
-        width: "clamp(100px, 14vw, 160px)",
         height: "48px",
-        marginLeft: "clamp(20px, 4vw, 40px)",
-        marginRight: "clamp(20px, 4vw, 40px)",
+        marginLeft: "clamp(24px, 4vw, 48px)",
+        marginRight: "clamp(24px, 4vw, 48px)",
       }}
     >
       <span
-        className="text-white/20 font-semibold tracking-wider uppercase whitespace-nowrap"
-        style={{ fontSize: "clamp(13px, 1.5vw, 18px)" }}
+        className="font-semibold tracking-wider uppercase whitespace-nowrap"
+        style={{
+          fontSize: "clamp(13px, 1.5vw, 18px)",
+          color: "var(--logo-color)",
+          opacity: 0.85,
+          transition: "opacity 0.3s",
+        }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.85"; }}
       >
         {name}
       </span>
@@ -113,7 +94,7 @@ export default function LogoCarousel() {
           style={{ width: "fit-content" }}
         >
           {allBrands.map((brand, i) => (
-            <LogoItem key={`${brand.name}-${i}`} name={brand.name} logo={brand.logo} />
+            <LogoItem key={`${brand.name}-${i}`} name={brand.name} />
           ))}
         </motion.div>
       </div>

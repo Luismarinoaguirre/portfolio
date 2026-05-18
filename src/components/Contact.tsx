@@ -5,7 +5,11 @@ import FadeIn from "./FadeIn";
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-px py-32 md:py-40">
+    <section
+      id="contact"
+      className="section-px"
+      style={{ paddingTop: "clamp(80px, 12vw, 160px)", paddingBottom: "clamp(80px, 12vw, 160px)" }}
+    >
       <div className="section-container">
         {/* Phrase */}
         <FadeIn>
@@ -66,7 +70,7 @@ export default function Contact() {
 
         {/* Divider + socials */}
         <FadeIn delay={0.55}>
-          <div className="border-t border-white/[0.08]" style={{ paddingTop: "40px" }}>
+          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "40px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "24px" }}>
               <a
                 href="https://www.linkedin.com/in/luis-bautista-marino-aguirre-28aa96203/"

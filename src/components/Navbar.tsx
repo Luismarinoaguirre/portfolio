@@ -98,7 +98,7 @@ export default function Navbar() {
     <>
       <motion.header
         initial={{ y: -100 }}
-        animate={{ y: isHidden && !isMobileOpen ? -150 : 0 }}
+        animate={{ y: isHidden && !isMobileOpen ? "-200%" : 0 }}
         transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
         className="fixed top-0 left-0 right-0 z-50 section-px"
       >

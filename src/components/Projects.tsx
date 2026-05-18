@@ -98,15 +98,15 @@ export default function Projects() {
                     style={{
                       width: "clamp(40px, 4vw, 56px)",
                       height: "clamp(40px, 4vw, 56px)",
-                      borderColor: "rgba(235,235,235,0.2)",
+                      borderColor: "var(--fg-20)",
                       backgroundColor: "transparent",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.6)";
-                      e.currentTarget.style.backgroundColor = "rgba(235,235,235,0.05)";
+                      e.currentTarget.style.borderColor = "var(--foreground)";
+                      e.currentTarget.style.backgroundColor = "var(--glass-soft)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.2)";
+                      e.currentTarget.style.borderColor = "var(--fg-20)";
                       e.currentTarget.style.backgroundColor = "transparent";
                     }}
                     aria-label="Previous project"
@@ -131,15 +131,15 @@ export default function Projects() {
                     style={{
                       width: "clamp(40px, 4vw, 56px)",
                       height: "clamp(40px, 4vw, 56px)",
-                      borderColor: "rgba(235,235,235,0.2)",
+                      borderColor: "var(--fg-20)",
                       backgroundColor: "transparent",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.6)";
-                      e.currentTarget.style.backgroundColor = "rgba(235,235,235,0.05)";
+                      e.currentTarget.style.borderColor = "var(--foreground)";
+                      e.currentTarget.style.backgroundColor = "var(--glass-soft)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(235,235,235,0.2)";
+                      e.currentTarget.style.borderColor = "var(--fg-20)";
                       e.currentTarget.style.backgroundColor = "transparent";
                     }}
                     aria-label="Next project"

@@ -13,19 +13,30 @@ function Pill({ label }: { label: string }) {
         display: "inline-flex",
         alignItems: "center",
         gap: "6px",
-        padding: "6px 12px",
+        padding: "7px 14px",
         borderRadius: "999px",
         border: "1px solid var(--border)",
-        fontSize: "13px",
+        fontSize: "12px",
+        fontFamily: "var(--font-mono)",
         color: "var(--foreground)",
         background: "var(--glass-soft)",
         whiteSpace: "nowrap",
+        transition: "background 0.2s, border-color 0.2s",
+        cursor: "default",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLElement).style.background = "var(--glass-hover, var(--card-bg))";
+        (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLElement).style.background = "var(--glass-soft)";
+        (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
       }}
     >
       <span
         style={{
-          width: "6px",
-          height: "6px",
+          width: "5px",
+          height: "5px",
           borderRadius: "50%",
           background: "var(--accent)",
           flexShrink: 0,
@@ -33,6 +44,76 @@ function Pill({ label }: { label: string }) {
       />
       {label}
     </span>
+  );
+}
+
+interface ManifestRowProps {
+  num: string;
+  label: string;
+  description: string;
+  children: React.ReactNode;
+  noBorder?: boolean;
+}
+
+function ManifestRow({ num, label, description, children, noBorder }: ManifestRowProps) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "160px 1fr",
+        borderBottom: noBorder ? "none" : "1px solid var(--border)",
+      }}
+    >
+      {/* Key column */}
+      <div
+        style={{
+          padding: "28px 24px",
+          borderRight: "1px solid var(--border)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "6px",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "11px",
+            fontFamily: "var(--font-mono)",
+            letterSpacing: "0.22em",
+            color: "var(--accent)",
+            fontWeight: 500,
+          }}
+        >
+          {num}
+        </span>
+        <span
+          style={{
+            fontSize: "13px",
+            fontFamily: "var(--font-mono)",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            color: "var(--muted)",
+            fontWeight: 500,
+          }}
+        >
+          {label}
+        </span>
+      </div>
+
+      {/* Value column */}
+      <div style={{ padding: "24px 28px", display: "flex", flexDirection: "column", gap: "16px" }}>
+        <p
+          style={{
+            fontSize: "clamp(13px, 1.3vw, 14px)",
+            color: "var(--muted)",
+            lineHeight: "1.65",
+            fontStyle: "italic",
+          }}
+        >
+          {description}
+        </p>
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -158,132 +239,51 @@ export default function About() {
                 overflow: "hidden",
               }}
             >
-              {/* CAPABILITIES row */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "140px 1fr",
-                  borderBottom: "1px solid var(--border)",
-                }}
+              {/* 01 — CAPABILITIES */}
+              <ManifestRow
+                num="01"
+                label="Capabilities"
+                description="Six disciplines that ladder up to a single craft — thinking in systems, building with intention."
               >
-                <div
-                  style={{
-                    padding: "28px 24px",
-                    borderRight: "1px solid var(--border)",
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "10px",
-                      fontFamily: "var(--font-mono)",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "var(--muted)",
-                    }}
-                  >
-                    Capabilities
-                  </span>
-                </div>
-                <div
-                  style={{
-                    padding: "24px 28px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "8px",
-                    alignContent: "flex-start",
-                  }}
-                >
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {["UX Design", "UI Design", "Product Design", "Graphic Design", "Industrial Design", "Prototyping"].map((label) => (
                     <Pill key={label} label={label} />
                   ))}
                 </div>
-              </div>
+              </ManifestRow>
 
-              {/* IDENTITY row */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "140px 1fr",
-                  borderBottom: "1px solid var(--border)",
-                }}
+              {/* 02 — IDENTITY */}
+              <ManifestRow
+                num="02"
+                label="Identity"
+                description="Designing with clarity, intention, and a user-first approach to create meaningful digital products."
               >
-                <div
+                <p
                   style={{
-                    padding: "28px 24px",
-                    borderRight: "1px solid var(--border)",
-                    display: "flex",
-                    alignItems: "flex-start",
+                    fontSize: "clamp(14px, 1.5vw, 16px)",
+                    color: "var(--muted)",
+                    fontStyle: "italic",
+                    lineHeight: "1.65",
+                    fontWeight: 300,
                   }}
                 >
-                  <span
-                    style={{
-                      fontSize: "10px",
-                      fontFamily: "var(--font-mono)",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "var(--muted)",
-                    }}
-                  >
-                    Identity
-                  </span>
-                </div>
-                <div style={{ padding: "28px 28px" }}>
-                  <p
-                    style={{
-                      fontSize: "clamp(14px, 1.5vw, 16px)",
-                      color: "var(--foreground)",
-                      fontStyle: "italic",
-                      lineHeight: "1.65",
-                    }}
-                  >
-                    Designing with clarity, intention, and a user-first approach to create meaningful digital products.
-                  </p>
-                </div>
-              </div>
+                  Buenos Aires, Argentina · UX/UI Designer · 6 years of experience across editorial, product &amp; brand.
+                </p>
+              </ManifestRow>
 
-              {/* STACK row */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "140px 1fr",
-                }}
+              {/* 03 — STACK */}
+              <ManifestRow
+                num="03"
+                label="Stack"
+                description="Tools sharpened over six years across editorial, product, and brand work."
+                noBorder
               >
-                <div
-                  style={{
-                    padding: "28px 24px",
-                    borderRight: "1px solid var(--border)",
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "10px",
-                      fontFamily: "var(--font-mono)",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "var(--muted)",
-                    }}
-                  >
-                    Stack
-                  </span>
-                </div>
-                <div
-                  style={{
-                    padding: "24px 28px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "8px",
-                    alignContent: "flex-start",
-                  }}
-                >
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {["Figma", "Adobe Suite", "Framer", "Next.js", "Tailwind CSS", "Framer Motion"].map((label) => (
                     <Pill key={label} label={label} />
                   ))}
                 </div>
-              </div>
+              </ManifestRow>
             </div>
           </FadeIn>
 
