@@ -190,3 +190,49 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
 }
+
+/* ── Theme Toggle ── */
+.theme-toggle {
+  position: relative;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--foreground);
+  border: 1px solid var(--foreground);
+  color: var(--background);
+  box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+              background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb), 0.55);
+}
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ── Terminal ── */
+.terminal-line {
+  opacity: 0;
+  transform: translateY(4px);
+  animation: termIn 0.2s forwards;
+}
+@keyframes termIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+.terminal-cursor {
+  animation: blink 1.06s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
