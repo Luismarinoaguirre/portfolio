@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="32" width="32" fill-rule="evenodd"><g fill="#000"><path d="M17.992 23h-3.98V9h3.98z"/><path d="M9 14.005h13.985v3.98H9z"/></g><g fill="#fff"><path d="M16.969 22H15V10.014h1.969z"/><path d="M10.016 15.031h11.967V17H10.016z"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g stroke="#FFD000" stroke-width="1.2" fill="none">
+    <circle cx="16" cy="16" r="6" opacity="0.85"></circle>
+    <line x1="16" y1="2" x2="16" y2="10"></line>
+    <line x1="16" y1="22" x2="16" y2="30"></line>
+    <line x1="2" y1="16" x2="10" y2="16"></line>
+    <line x1="22" y1="16" x2="30" y2="16"></line>
+    <circle cx="16" cy="16" r="1" fill="#FFD000" stroke="none"></circle>
+  </g>
+</svg>
