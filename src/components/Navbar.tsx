@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { GooeyInput } from "./ui/gooey-input";
 
@@ -12,12 +13,12 @@ const navItems = [
 ];
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const saved = (localStorage.getItem("portfolio-theme") as "light" | "dark") || "light";
-    setTheme(saved);
-  }, []);
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("portfolio-theme") as "light" | "dark") || "light";
+    }
+    return "light";
+  });
 
   const toggle = () => {
     const next = theme === "light" ? "dark" : "light";
@@ -104,7 +105,7 @@ export default function Navbar() {
       >
         <div className="section-container flex items-center justify-between h-20 md:h-28 mt-4">
           {/* Logo — left */}
-          <a
+          <Link
             href="/#top"
             style={{
               width: "52px",
@@ -124,7 +125,7 @@ export default function Navbar() {
             }}
           >
             LM
-          </a>
+          </Link>
 
           {/* Desktop — centered pill nav */}
           <div className="hidden md:flex items-center">
@@ -143,7 +144,7 @@ export default function Navbar() {
               }}
             >
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
                   style={{
@@ -156,16 +157,16 @@ export default function Navbar() {
                     transition: "color 0.3s, background 0.3s",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--accent)";
-                    e.currentTarget.style.background = "var(--glass-hover)";
+                    (e.currentTarget as HTMLElement).style.color = "var(--accent)";
+                    (e.currentTarget as HTMLElement).style.background = "var(--glass-hover)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--muted)";
-                    e.currentTarget.style.background = "transparent";
+                    (e.currentTarget as HTMLElement).style.color = "var(--muted)";
+                    (e.currentTarget as HTMLElement).style.background = "transparent";
                   }}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -213,24 +214,27 @@ export default function Navbar() {
           >
             <nav className="flex flex-col items-center" style={{ gap: "40px" }}>
               {navItems.map((item, i) => (
-                <motion.a
+                <motion.div
                   key={item.label}
-                  href={item.href}
-                  onClick={() => setIsMobileOpen(false)}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 30 }}
                   transition={{ delay: i * 0.08 }}
-                  style={{
-                    fontSize: "36px",
-                    fontWeight: 300,
-                    color: "var(--foreground)",
-                    textDecoration: "none",
-                    transition: "color 0.3s",
-                  }}
                 >
-                  {item.label}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileOpen(false)}
+                    style={{
+                      fontSize: "36px",
+                      fontWeight: 300,
+                      color: "var(--foreground)",
+                      textDecoration: "none",
+                      transition: "color 0.3s",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
               <motion.div
                 initial={{ opacity: 0 }}

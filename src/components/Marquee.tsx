@@ -10,8 +10,12 @@ export default function Marquee() {
   return (
     <div
       className="overflow-hidden"
-      style={{ borderTop: "1px solid var(--hairline)", borderBottom: "1px solid var(--hairline)" }}
-      style={{ paddingTop: "clamp(28px, 4vw, 48px)", paddingBottom: "clamp(28px, 4vw, 48px)" }}
+      style={{
+        borderTop: "1px solid var(--hairline)",
+        borderBottom: "1px solid var(--hairline)",
+        paddingTop: "clamp(28px, 4vw, 48px)",
+        paddingBottom: "clamp(28px, 4vw, 48px)",
+      }}
     >
       <motion.div
         className="flex whitespace-nowrap"
