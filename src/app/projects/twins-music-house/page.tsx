@@ -67,9 +67,7 @@ export default function TwinsMusicHouse() {
               variants={fadeIn}
               custom={0.5}
             >
-              Twins<br />
-              <em style={{ color: TW.green }}>Music</em><br />
-              House
+              Twins <em style={{ color: TW.green }}>Music</em> House
             </motion.h1>
           </div>
 
@@ -113,7 +111,7 @@ export default function TwinsMusicHouse() {
             variants={fadeIn}
             custom={0.1}
           >
-            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", paddingTop: "80px", marginBottom: "20px" }}>Web Design</p>
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: TW.green, fontFamily: "var(--font-body-project)", paddingTop: "220px", marginBottom: "20px" }}>Web Design</p>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 300, lineHeight: 1.1, color: TW.fg, marginBottom: "48px" }}>
               iMac <em style={{ color: TW.green }}>Presentation</em>
             </h2>
