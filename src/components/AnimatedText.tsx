@@ -23,9 +23,18 @@ export default function AnimatedText({
   return (
     <Tag className={className} style={style}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden">
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            overflow: "hidden",
+            paddingBottom: "0.2em",
+            marginBottom: "-0.2em",
+            verticalAlign: "top",
+          }}
+        >
           <motion.span
-            className="inline-block"
+            style={{ display: "inline-block" }}
             initial={{ y: "100%" }}
             whileInView={{ y: 0 }}
             transition={{
