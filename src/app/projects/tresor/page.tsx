@@ -82,7 +82,7 @@ export default function Tresor() {
             style={{ fontFamily: "var(--font-display)", fontSize: "clamp(100px,18vw,260px)", fontWeight: 900, lineHeight: 0.88, letterSpacing: "-0.01em", textTransform: "uppercase", color: TR.fg }}
             initial="hidden" animate="visible" variants={fadeIn} custom={0.3}
           >
-            TRE<span style={{ color: TR.red }}>S</span><br />OR
+            TRE<span style={{ color: TR.red }}>S</span>OR
           </motion.h1>
 
           <motion.div
