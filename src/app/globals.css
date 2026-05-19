@@ -103,12 +103,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url('/cursor.svg') 16 16, crosshair;
+  cursor: none;
   transition: background-color 0.45s ease, color 0.45s ease;
 }
 
 a, button, canvas, div {
-  cursor: url('/cursor.svg') 16 16, crosshair;
+  cursor: none;
 }
 
 /* ── Responsive utility classes ── */
