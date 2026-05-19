@@ -244,8 +244,14 @@ export default function About() {
                 boxShadow: "var(--shadow-card)",
               }}
             >
-              {/* 01 — Capabilities */}
-              <ManifestSection num="01" label="Capabilities" isFirst>
+              {/* 01 — Identity */}
+              <ManifestSection num="01" label="Identity" isFirst isItalic>
+                Designing with clarity, intention, and a user-first
+                approach to create meaningful digital products.
+              </ManifestSection>
+
+              {/* 02 — Capabilities */}
+              <ManifestSection num="02" label="Capabilities">
                 Six disciplines that ladder up to a single craft —
                 thinking in systems, building with intention.
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -253,12 +259,6 @@ export default function About() {
                     <Pill key={l} label={l} />
                   ))}
                 </div>
-              </ManifestSection>
-
-              {/* 02 — Identity */}
-              <ManifestSection num="02" label="Identity" isItalic>
-                Designing with clarity, intention, and a user-first
-                approach to create meaningful digital products.
               </ManifestSection>
 
               {/* 03 — Stack */}
