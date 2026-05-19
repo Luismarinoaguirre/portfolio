@@ -274,21 +274,6 @@ export default function About() {
             </div>
           </FadeIn>
 
-          {/* Statement */}
-          <FadeIn delay={0.3}>
-            <p
-              className="text-foreground font-semibold uppercase text-center"
-              style={{
-                fontSize: "clamp(13px, 1.4vw, 16px)",
-                letterSpacing: "0.04em",
-                lineHeight: "1.7",
-                marginTop: "clamp(48px, 6vw, 80px)",
-                opacity: 0.9,
-              }}
-            >
-              I turn ideas into digital products with purpose, clarity, and edge.
-            </p>
-          </FadeIn>
         </div>
       </div>
     </section>
