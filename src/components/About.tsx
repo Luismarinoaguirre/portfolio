@@ -135,15 +135,19 @@ export default function About() {
 
       {/* Part 1: Big title */}
       <div
-        className="section-px flex flex-col items-center justify-center"
-        style={{ paddingTop: "clamp(60px, 10vw, 120px)", paddingBottom: "clamp(40px, 6vw, 80px)" }}
+        className="section-px flex flex-col items-center"
+        style={{
+          paddingTop: "clamp(60px, 10vw, 120px)",
+          paddingBottom: "clamp(40px, 6vw, 80px)",
+          gap: "clamp(8px, 1vw, 14px)",
+        }}
       >
         <AnimatedText
           text="About Me"
           className="font-bold tracking-[-0.04em] text-foreground text-center"
           delay={0.1}
           as="h2"
-          style={{ fontSize: "clamp(56px, 12vw, 180px)" }}
+          style={{ fontSize: "clamp(56px, 12vw, 180px)", lineHeight: 1 }}
         />
         <FadeIn delay={0.3}>
           <p
@@ -151,7 +155,6 @@ export default function About() {
             style={{
               fontSize: "clamp(15px, 1.8vw, 18px)",
               maxWidth: "520px",
-              marginTop: "clamp(16px, 2vw, 24px)",
             }}
           >
             Rethinking processes through design to create meaningful, user-centered digital experiences.

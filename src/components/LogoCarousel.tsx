@@ -1,43 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-// ── Update this list when you add real logos to /public/logos/ ──
-// Set `logo` to the filename (e.g., "future-infinit.svg") once available.
 const brands = [
-  { name: "Future Infinit" },
-  { name: "Daly Nosh" },
-  { name: "MALBA+" },
-  { name: "Family" },
-  { name: "Twins Music" },
-  { name: "Tresor" },
-  { name: "Atelier" },
-  { name: "Northwood" },
+  { name: "Future Infinit", logo: "/logos/logo-01.svg" },
+  { name: "Daly Nosh",      logo: "/logos/logo-02.svg" },
+  { name: "MALBA+",         logo: "/logos/logo-03.svg" },
+  { name: "Family",         logo: "/logos/logo-04.svg" },
+  { name: "Twins Music",    logo: "/logos/logo-05.svg" },
+  { name: "Tresor",         logo: "/logos/logo-06.svg" },
+  { name: "Atelier",        logo: "/logos/logo-07.svg" },
+  { name: "Northwood",      logo: "/logos/logo-08.svg" },
 ];
 
-function LogoItem({ name }: { name: string }) {
+function LogoItem({ name, logo }: { name: string; logo: string }) {
   return (
     <div
       className="flex items-center justify-center shrink-0"
       style={{
         height: "48px",
-        marginLeft: "clamp(24px, 4vw, 48px)",
-        marginRight: "clamp(24px, 4vw, 48px)",
+        marginLeft: "clamp(32px, 5vw, 64px)",
+        marginRight: "clamp(32px, 5vw, 64px)",
+        opacity: 0.65,
+        transition: "opacity 0.3s",
       }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
     >
-      <span
-        className="font-semibold tracking-wider uppercase whitespace-nowrap"
-        style={{
-          fontSize: "clamp(13px, 1.5vw, 18px)",
-          color: "var(--logo-color)",
-          opacity: 0.85,
-          transition: "opacity 0.3s",
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.85"; }}
-      >
-        {name}
-      </span>
+      <Image
+        src={logo}
+        alt={name}
+        width={160}
+        height={48}
+        style={{ height: "36px", width: "auto", objectFit: "contain" }}
+      />
     </div>
   );
 }
@@ -94,7 +91,7 @@ export default function LogoCarousel() {
           style={{ width: "fit-content" }}
         >
           {allBrands.map((brand, i) => (
-            <LogoItem key={`${brand.name}-${i}`} name={brand.name} />
+            <LogoItem key={`${brand.name}-${i}`} name={brand.name} logo={brand.logo} />
           ))}
         </motion.div>
       </div>

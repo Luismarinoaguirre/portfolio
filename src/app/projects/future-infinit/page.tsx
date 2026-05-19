@@ -225,7 +225,7 @@ export default function FutureInfinit() {
         </motion.div>
 
         {/* ── Mobile ── */}
-        <section style={{ padding: "120px 112px", display: "flex", alignItems: "center", gap: "80px" }}>
+        <section style={{ padding: "120px 112px", display: "flex", alignItems: "flex-start", gap: "80px" }}>
           <motion.div
             style={{ flex: 1 }}
             initial="hidden"
@@ -246,7 +246,7 @@ export default function FutureInfinit() {
             </p>
           </motion.div>
           <motion.div
-            style={{ flexShrink: 0, width: "280px" }}
+            style={{ flexShrink: 0, width: "360px" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -256,8 +256,8 @@ export default function FutureInfinit() {
             <Image
               src="/projects/future-infinit/mobile-mockup.png"
               alt="Future Infinit — Mobile"
-              width={280}
-              height={560}
+              width={360}
+              height={720}
               className="w-full h-auto"
               style={{ filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.3))" }}
             />
