@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-// 1.5 mm ≈ 5.67 px at 96 dpi — rounded to 6 px
-const SIZE = 6;
+// 3 mm ≈ 11.34 px at 96 dpi — rounded to 11 px
+const SIZE = 11;
 
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
