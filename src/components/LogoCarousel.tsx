@@ -17,22 +17,19 @@ const brands = [
 function LogoItem({ name, logo }: { name: string; logo: string }) {
   return (
     <div
-      className="flex items-center justify-center shrink-0"
+      className="logo-item flex items-center justify-center shrink-0"
       style={{
         height: "48px",
         marginLeft: "clamp(32px, 5vw, 64px)",
         marginRight: "clamp(32px, 5vw, 64px)",
-        opacity: 0.65,
-        transition: "opacity 0.3s",
       }}
-      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
     >
       <Image
         src={logo}
         alt={name}
         width={160}
         height={48}
+        className="logo-img"
         style={{ height: "36px", width: "auto", objectFit: "contain" }}
       />
     </div>

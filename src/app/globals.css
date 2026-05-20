@@ -111,6 +111,21 @@ a, button, canvas, div {
   cursor: none;
 }
 
+/* ── Logo carousel — monochrome adaptive filter ── */
+.logo-img {
+  filter: brightness(0) opacity(0.35);
+  transition: filter 0.3s, opacity 0.3s;
+}
+[data-theme="dark"] .logo-img {
+  filter: brightness(0) invert(1) opacity(0.45);
+}
+.logo-item:hover .logo-img {
+  filter: brightness(0) opacity(0.75);
+}
+[data-theme="dark"] .logo-item:hover .logo-img {
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+
 /* ── Responsive utility classes ── */
 .section-px {
   padding-left: var(--px-section);
