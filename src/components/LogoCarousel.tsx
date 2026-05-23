@@ -19,7 +19,7 @@ function LogoItem({ name, logo }: { name: string; logo: string }) {
     <div
       className="logo-item flex items-center justify-center shrink-0"
       style={{
-        height: "48px",
+        height: "64px",
         marginLeft: "clamp(32px, 5vw, 64px)",
         marginRight: "clamp(32px, 5vw, 64px)",
       }}
@@ -30,7 +30,7 @@ function LogoItem({ name, logo }: { name: string; logo: string }) {
         width={160}
         height={48}
         className="logo-img"
-        style={{ height: "36px", width: "auto", objectFit: "contain" }}
+        style={{ height: "52px", width: "auto", objectFit: "contain" }}
       />
     </div>
   );
