@@ -56,7 +56,7 @@ export const projects: Project[] = [
     subtitle: "Landing Page",
     category: "Web",
     tags: ["UX/UI", "Web", "Landing"],
-    image: "/projects/twins/twins-music-house.jpg",
+    image: "/projects/twins/Twins.jpg",
     year: "2023",
     color: "#0a0a0a",
   },
