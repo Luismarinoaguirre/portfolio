@@ -157,7 +157,7 @@ export default function FutureInfinit() {
           />
         </section>
 
-        {/* ── Web Screenshot (full-bleed) ── */}
+        {/* ── Website Demo Video (full-bleed) ── */}
         <motion.section
           style={{ position: "relative", overflow: "hidden" }}
           initial="hidden"
@@ -167,11 +167,19 @@ export default function FutureInfinit() {
           custom={0.1}
         >
           <div style={{ position: "relative", width: "100%", height: "85vh", overflow: "hidden" }}>
-            <Image
-              src="/projects/future-infinit/web-screenshot.png"
-              alt="Future Infinit — Web Design"
-              fill
-              style={{ objectFit: "cover", objectPosition: "top" }}
+            <video
+              src="/videos/future-infinit-hero.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
+                display: "block",
+              }}
             />
             <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 60%, ${FI.bg} 100%)` }} />
             <span
