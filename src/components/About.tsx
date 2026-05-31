@@ -50,29 +50,27 @@ function Pill({ label }: { label: string }) {
   );
 }
 
-/* ── Manifest section row ── */
-interface ManifestSectionProps {
+/* ── Manifest column (horizontal layout) ── */
+interface ManifestColProps {
   num: string;
   label: string;
-  isFirst?: boolean;
-  isLast?: boolean;
   isItalic?: boolean;
+  hasBorder?: boolean;
   children: React.ReactNode;
 }
 
-function ManifestSection({ num, label, isFirst, isLast, isItalic, children }: ManifestSectionProps) {
+function ManifestCol({ num, label, isItalic, hasBorder, children }: ManifestColProps) {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "140px 1fr",
-        gap: "clamp(20px, 3vw, 56px)",
-        padding: `${isFirst ? "0" : "clamp(24px, 3vw, 36px)"} 0 ${isLast ? "0" : "clamp(24px, 3vw, 36px)"}`,
-        borderTop: isFirst ? "none" : "1px solid var(--border)",
-        alignItems: "baseline",
+        display: "flex",
+        flexDirection: "column",
+        gap: "clamp(16px, 2vw, 24px)",
+        paddingLeft: hasBorder ? "clamp(24px, 3vw, 48px)" : 0,
+        borderLeft: hasBorder ? "1px solid var(--border)" : "none",
       }}
     >
-      {/* Key */}
+      {/* Header */}
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         <span
           style={{
@@ -99,11 +97,11 @@ function ManifestSection({ num, label, isFirst, isLast, isItalic, children }: Ma
         </span>
       </div>
 
-      {/* Value */}
+      {/* Content */}
       <div
         style={{
-          fontSize: "clamp(15px, 1.8vw, 19px)",
-          lineHeight: "1.55",
+          fontSize: "clamp(14px, 1.4vw, 16px)",
+          lineHeight: "1.6",
           color: isItalic ? "var(--muted)" : "var(--foreground)",
           fontWeight: isItalic ? 300 : 400,
           fontStyle: isItalic ? "italic" : "normal",
@@ -229,7 +227,7 @@ export default function About() {
       >
         <div
           style={{
-            maxWidth: "820px",
+            maxWidth: "1100px",
             width: "100%",
             marginLeft: "auto",
             marginRight: "auto",
@@ -245,16 +243,19 @@ export default function About() {
                 borderRadius: "24px",
                 padding: "clamp(28px, 4vw, 56px)",
                 boxShadow: "var(--shadow-card)",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "clamp(24px, 3vw, 48px)",
               }}
             >
               {/* 01 — Identity */}
-              <ManifestSection num="01" label="Identity" isFirst isItalic>
+              <ManifestCol num="01" label="Identity" isItalic>
                 Designing with clarity, intention, and a user-first
                 approach to create meaningful digital products.
-              </ManifestSection>
+              </ManifestCol>
 
               {/* 02 — Capabilities */}
-              <ManifestSection num="02" label="Capabilities">
+              <ManifestCol num="02" label="Capabilities" hasBorder>
                 Six disciplines that ladder up to a single craft —
                 thinking in systems, building with intention.
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -262,10 +263,10 @@ export default function About() {
                     <Pill key={l} label={l} />
                   ))}
                 </div>
-              </ManifestSection>
+              </ManifestCol>
 
               {/* 03 — Stack */}
-              <ManifestSection num="03" label="Stack" isLast>
+              <ManifestCol num="03" label="Stack" hasBorder>
                 Tools sharpened over six years across editorial,
                 product, and brand work.
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -273,7 +274,7 @@ export default function About() {
                     <Pill key={l} label={l} />
                   ))}
                 </div>
-              </ManifestSection>
+              </ManifestCol>
             </div>
           </FadeIn>
 
