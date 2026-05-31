@@ -25,7 +25,6 @@ export default function Home() {
       <Services />
       <div style={{ height: "calc(var(--spacer) * 0.9)" }} />
       <Marquee />
-      <div style={{ height: "calc(var(--spacer) * 0.9)" }} />
       <Contact />
       <Footer />
     </SmoothScroll>
