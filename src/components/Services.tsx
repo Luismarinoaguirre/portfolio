@@ -108,55 +108,54 @@ export default function Services() {
                   backgroundColor: "var(--card-bg)",
                   border: "1px solid var(--border)",
                   boxShadow: "var(--shadow-card)",
-                  padding: "clamp(20px, 3vw, 36px)",
+                  padding: "clamp(24px, 3vw, 44px)",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "clamp(24px, 4vw, 64px)",
+                  alignItems: "center",
                 }}
               >
-                {/* Tag */}
-                <span
-                  className="text-muted italic"
-                  style={{
-                    fontSize: "clamp(12px, 1.5vw, 14px)",
-                    marginBottom: "clamp(12px, 2vw, 20px)",
-                    display: "block",
-                  }}
-                >
-                  {service.tag}
-                </span>
+                {/* Left — Tag, Title, Description */}
+                <div>
+                  <span
+                    className="text-muted italic"
+                    style={{
+                      fontSize: "clamp(12px, 1.2vw, 14px)",
+                      marginBottom: "clamp(10px, 1.5vw, 16px)",
+                      display: "block",
+                    }}
+                  >
+                    {service.tag}
+                  </span>
+                  <h3
+                    className="font-semibold text-foreground"
+                    style={{
+                      fontSize: "clamp(22px, 3vw, 40px)",
+                      marginBottom: "clamp(12px, 1.5vw, 20px)",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    <span className="text-accent">{service.number}.</span>{" "}
+                    {service.title}
+                  </h3>
+                  <p
+                    className="text-muted leading-relaxed"
+                    style={{ fontSize: "clamp(13px, 1.2vw, 15px)" }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
 
-                {/* Number + Title */}
-                <h3
-                  className="font-semibold text-foreground"
-                  style={{
-                    fontSize: "clamp(22px, 3.5vw, 36px)",
-                    marginBottom: "clamp(12px, 2vw, 20px)",
-                  }}
-                >
-                  <span className="text-accent">{service.number}.</span>{" "}
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="text-muted leading-relaxed"
-                  style={{
-                    fontSize: "clamp(13px, 1.5vw, 16px)",
-                    maxWidth: "680px",
-                    marginBottom: "clamp(20px, 3vw, 32px)",
-                  }}
-                >
-                  {service.description}
-                </p>
-
-                {/* Skills list — always 2 columns */}
+                {/* Right — Skills 3×2 grid */}
                 <ul
                   className="text-muted"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gap: "clamp(6px, 1.5vw, 10px) clamp(16px, 3vw, 40px)",
-                    maxWidth: "600px",
-                    fontSize: "clamp(11px, 1.3vw, 14px)",
-                    opacity: 0.7,
+                    gap: "clamp(10px, 1.5vw, 16px) clamp(16px, 2vw, 32px)",
+                    fontSize: "clamp(12px, 1.1vw, 14px)",
+                    borderLeft: "1px solid var(--border)",
+                    paddingLeft: "clamp(24px, 4vw, 64px)",
                   }}
                 >
                   {service.items.map((item) => (
