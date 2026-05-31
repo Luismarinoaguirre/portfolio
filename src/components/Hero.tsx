@@ -91,9 +91,9 @@ export default function Hero() {
         {/* Description */}
         <FadeIn delay={0.8} className="flex justify-center">
           <p className="text-muted text-sm md:text-base max-w-lg leading-relaxed text-center">
-            I am a UX/UI designer with experience in graphic and industrial
-            design. Rethinking processes through design to create meaningful,
-            user-centered products.
+            UX/UI designer with a foundation in industrial and graphic design.
+            I turn complex processes into clear, user-centered digital
+            products — thinking in systems, from concept to interface.
           </p>
         </FadeIn>
 

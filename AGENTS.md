@@ -4,7 +4,7 @@
 Personal UX/UI design portfolio rebuilt from Framer to Next.js for better performance, full control, and cost savings.
 
 **Owner:** Luis Bautista Marino Aguirre — UX/UI Designer (Buenos Aires, Argentina)
-**Email:** luismarinoaguiree@gmail.com
+**Email:** luismarinoaguirree@gmail.com
 **LinkedIn:** https://www.linkedin.com/in/luis-bautista-marino-aguirre-28aa96203/
 **GitHub:** https://github.com/Luismarinoaguirre/portfolio
 **Vercel:** https://portfolio-luismarinoaguirres-projects.vercel.app/

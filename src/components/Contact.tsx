@@ -17,9 +17,9 @@ export default function Contact() {
             className="text-foreground font-light leading-[1.15] tracking-[-0.03em]"
             style={{ fontSize: "clamp(22px, 4vw, 52px)", maxWidth: "700px", marginBottom: "80px" }}
           >
-            Got a project in mind?{" "}
+            Have a role or a project in mind?{" "}
             <span className="text-muted">
-              Let&apos;s bring your ideas to life.
+              Let&apos;s build something worth using.
             </span>
           </p>
         </FadeIn>
@@ -36,11 +36,11 @@ export default function Contact() {
           </FadeIn>
           <FadeIn delay={0.25}>
             <a
-              href="mailto:luismarinoaguiree@gmail.com"
+              href="mailto:luismarinoaguirree@gmail.com"
               className="text-foreground hover:text-accent transition-colors duration-300 font-light leading-none block"
               style={{ fontSize: "clamp(20px, 5.5vw, 72px)", letterSpacing: "-0.03em", wordBreak: "break-all", overflowWrap: "anywhere" }}
             >
-              luismarinoaguiree@gmail.com
+              luismarinoaguirree@gmail.com
             </a>
           </FadeIn>
         </div>
@@ -82,7 +82,7 @@ export default function Contact() {
                 LinkedIn
               </a>
               <a
-                href="mailto:luismarinoaguiree@gmail.com"
+                href="mailto:luismarinoaguirree@gmail.com"
                 className="text-muted hover:text-foreground transition-colors duration-300"
                 style={{ fontSize: "14px" }}
               >

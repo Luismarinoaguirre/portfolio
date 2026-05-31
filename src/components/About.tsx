@@ -152,10 +152,13 @@ export default function About() {
             className="text-muted text-center leading-relaxed"
             style={{
               fontSize: "clamp(15px, 1.8vw, 18px)",
-              maxWidth: "520px",
+              maxWidth: "600px",
             }}
           >
-            Rethinking processes through design to create meaningful, user-centered digital experiences.
+            I started in industrial design at UBA, learned to build brands and
+            websites along the way, and landed in UX/UI — where all of it comes
+            together. I design digital products with the rigor of a systems
+            thinker and the eye of a visual designer.
           </p>
         </FadeIn>
       </div>
@@ -250,14 +253,14 @@ export default function About() {
             >
               {/* 01 — Identity */}
               <ManifestCol num="01" label="Identity" isItalic>
-                Designing with clarity, intention, and a user-first
-                approach to create meaningful digital products.
+                A designer shaped by industrial rigor and visual craft —
+                turning complexity into products people actually understand.
               </ManifestCol>
 
               {/* 02 — Capabilities */}
               <ManifestCol num="02" label="Capabilities" hasBorder>
-                Six disciplines that ladder up to a single craft —
-                thinking in systems, building with intention.
+                Six disciplines that ladder up to a single craft — from
+                industrial foundations to the interface, thinking in systems.
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {["UX Design", "UI Design", "Product Design", "Graphic Design", "Industrial Design", "Prototyping"].map((l) => (
                     <Pill key={l} label={l} />
@@ -267,10 +270,10 @@ export default function About() {
 
               {/* 03 — Stack */}
               <ManifestCol num="03" label="Stack" hasBorder>
-                Tools sharpened over six years across editorial,
-                product, and brand work.
+                Design tools sharpened over six years — plus enough code to
+                speak the developers&apos; language.
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {["Figma", "Adobe Suite", "Framer", "Next.js", "Tailwind CSS", "Framer Motion"].map((l) => (
+                  {["Figma", "Adobe Suite", "Framer", "Next.js", "HTML/CSS"].map((l) => (
                     <Pill key={l} label={l} />
                   ))}
                 </div>

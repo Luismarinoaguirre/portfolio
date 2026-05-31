@@ -39,7 +39,7 @@ const services = [
     tag: "End to End",
     title: "Product Design",
     description:
-      "Full product thinking from concept to launch. Building web and mobile experiences that solve real problems and scale.",
+      "End-to-end product thinking, from concept to interface. An industrial design foundation means I design systems that hold up in the real world — solving real problems, built to scale.",
     items: [
       "Web & Mobile Apps",
       "E-Commerce Platforms",
