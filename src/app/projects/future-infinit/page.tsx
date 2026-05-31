@@ -263,13 +263,19 @@ export default function FutureInfinit() {
             variants={fadeIn}
             custom={0.3}
           >
-            <Image
-              src="/projects/future-infinit/mobile-mockup.png"
-              alt="Future Infinit — Mobile"
-              width={360}
-              height={720}
-              className="w-full h-auto"
-              style={{ filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.3))" }}
+            <video
+              src="/videos/future-infinit-mobile.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "28px",
+                display: "block",
+                filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.3))",
+              }}
             />
           </motion.div>
         </section>
