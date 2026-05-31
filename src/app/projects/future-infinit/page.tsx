@@ -256,45 +256,108 @@ export default function FutureInfinit() {
             </p>
           </motion.div>
           <motion.div
-            style={{ flexShrink: 0, width: "300px" }}
+            style={{ flexShrink: 0, width: "280px" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeIn}
             custom={0.3}
           >
-            {/* Phone mockup shell */}
-            <div style={{ position: "relative", filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.25))" }}>
-              {/* Side buttons */}
-              <div style={{ position: "absolute", right: "-4px", top: "110px", width: "4px", height: "44px", background: "#2c2c2e", borderRadius: "0 3px 3px 0" }} />
-              <div style={{ position: "absolute", left: "-4px", top: "88px", width: "4px", height: "32px", background: "#2c2c2e", borderRadius: "3px 0 0 3px" }} />
-              <div style={{ position: "absolute", left: "-4px", top: "132px", width: "4px", height: "56px", background: "#2c2c2e", borderRadius: "3px 0 0 3px" }} />
+            {/* ── Realistic iPhone mockup ── */}
+            <div style={{ position: "relative" }}>
 
-              {/* Frame + screen */}
-              <div
-                style={{
-                  border: "10px solid #1c1c1e",
-                  borderRadius: "44px",
-                  overflow: "hidden",
-                  background: "#000",
-                  boxShadow: "inset 0 0 0 1px #3a3a3a",
-                  position: "relative",
-                }}
-              >
-                {/* Dynamic Island */}
+              {/* Power button (right) */}
+              <div style={{
+                position: "absolute", right: "-3px", top: "130px",
+                width: "3px", height: "62px",
+                background: "linear-gradient(to right, #3a3a3c, #48484a)",
+                borderRadius: "0 2px 2px 0",
+                boxShadow: "1px 0 2px rgba(0,0,0,0.6)",
+              }} />
+              {/* Silent toggle (left) */}
+              <div style={{
+                position: "absolute", left: "-3px", top: "100px",
+                width: "3px", height: "32px",
+                background: "linear-gradient(to left, #3a3a3c, #48484a)",
+                borderRadius: "2px 0 0 2px",
+                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
+              }} />
+              {/* Volume up (left) */}
+              <div style={{
+                position: "absolute", left: "-3px", top: "148px",
+                width: "3px", height: "52px",
+                background: "linear-gradient(to left, #3a3a3c, #48484a)",
+                borderRadius: "2px 0 0 2px",
+                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
+              }} />
+              {/* Volume down (left) */}
+              <div style={{
+                position: "absolute", left: "-3px", top: "210px",
+                width: "3px", height: "52px",
+                background: "linear-gradient(to left, #3a3a3c, #48484a)",
+                borderRadius: "2px 0 0 2px",
+                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
+              }} />
+
+              {/* Outer frame — titanium edge */}
+              <div style={{
+                borderRadius: "50px",
+                padding: "2px",
+                background: "linear-gradient(145deg, #4a4a4c 0%, #2a2a2c 40%, #3a3a3c 70%, #1c1c1e 100%)",
+                boxShadow: "0 50px 100px rgba(0,0,0,0.8), 0 20px 40px rgba(196,30,30,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+              }}>
+                {/* Inner bezel */}
                 <div style={{
-                  position: "absolute", top: 0, left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "80px", height: "26px",
+                  borderRadius: "48px",
+                  padding: "10px",
                   background: "#1c1c1e",
-                  borderRadius: "0 0 18px 18px",
-                  zIndex: 2,
-                }} />
-                <video
-                  src="/videos/future-infinit-mobile.mp4"
-                  autoPlay loop muted playsInline
-                  style={{ width: "100%", display: "block" }}
-                />
+                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 2px 4px rgba(0,0,0,0.8)",
+                }}>
+                  {/* Screen area */}
+                  <div style={{
+                    borderRadius: "40px",
+                    overflow: "hidden",
+                    position: "relative",
+                    background: "#000",
+                  }}>
+                    {/* Dynamic Island */}
+                    <div style={{
+                      position: "absolute", top: 0, left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "88px", height: "30px",
+                      background: "#000",
+                      borderRadius: "0 0 20px 20px",
+                      zIndex: 3,
+                      boxShadow: "0 0 0 1px rgba(255,255,255,0.04)",
+                    }} />
+
+                    {/* Video */}
+                    <video
+                      src="/videos/future-infinit-mobile.mp4"
+                      autoPlay loop muted playsInline
+                      style={{ width: "100%", display: "block" }}
+                    />
+
+                    {/* Glass reflection overlay */}
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%)",
+                      pointerEvents: "none",
+                      zIndex: 2,
+                      borderRadius: "40px",
+                    }} />
+
+                    {/* Home indicator */}
+                    <div style={{
+                      position: "absolute", bottom: "8px", left: "50%",
+                      transform: "translateX(-50%)",
+                      width: "100px", height: "4px",
+                      background: "rgba(255,255,255,0.35)",
+                      borderRadius: "2px",
+                      zIndex: 3,
+                    }} />
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
