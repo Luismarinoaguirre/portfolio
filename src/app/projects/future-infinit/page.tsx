@@ -221,16 +221,33 @@ export default function FutureInfinit() {
               connection between urban technology and organic elements that inspire the brand.
             </p>
           </div>
-          {/* Video panel */}
+          {/* Mockup photo panel with video composited onto phone screen */}
           <div style={{ position: "relative", overflow: "hidden" }}>
-            <video
-              src="/videos/future-infinit-mockup.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            {/* Background: original mockup photo */}
+            <Image
+              src="/projects/future-infinit/mockup-photo.png"
+              alt="Future Infinit — Product mockup"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
+            {/* Video composited onto phone screen area */}
+            <div style={{
+              position: "absolute",
+              top: "8%",
+              left: "28%",
+              width: "46%",
+              height: "74%",
+              overflow: "hidden",
+              borderRadius: "6px",
+              transform: "rotate(0.5deg)",
+              mixBlendMode: "normal",
+            }}>
+              <video
+                src="/videos/future-infinit-mockup.mp4"
+                autoPlay loop muted playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </div>
           </div>
         </motion.div>
 
