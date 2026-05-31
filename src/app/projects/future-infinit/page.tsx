@@ -221,13 +221,15 @@ export default function FutureInfinit() {
               connection between urban technology and organic elements that inspire the brand.
             </p>
           </div>
-          {/* Image panel */}
+          {/* Video panel */}
           <div style={{ position: "relative", overflow: "hidden" }}>
-            <Image
-              src="/projects/future-infinit/mockup-photo.png"
-              alt="Future Infinit — Product mockup"
-              fill
-              style={{ objectFit: "cover" }}
+            <video
+              src="/videos/future-infinit-mockup.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </div>
         </motion.div>
