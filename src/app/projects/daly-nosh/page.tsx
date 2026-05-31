@@ -189,25 +189,48 @@ export default function DalyNosh() {
             </motion.div>
           </div>
 
-          {/* Right — Phone */}
+          {/* Right — Phone with video */}
           <motion.div
             style={{ display: "flex", justifyContent: "center", alignItems: "flex-end" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            <Image
-              src="/projects/daly-nosh/splash.png"
-              alt="Daly Nosh — Splash Screen"
-              width={260}
-              height={520}
-              className="h-auto"
+            {/* Phone mockup: video behind transparent frame */}
+            <div
               style={{
+                position: "relative",
                 width: "260px",
+                aspectRatio: "1712 / 3548",
                 transform: "rotate(3deg)",
                 filter: `drop-shadow(0 40px 80px rgba(232,134,58,0.20)) drop-shadow(0 8px 24px rgba(0,0,0,0.12))`,
+                flexShrink: 0,
               }}
-            />
+            >
+              {/* Video fills screen area (4.3% / 1.9% / 92% / 96.2%) */}
+              <video
+                src="/videos/daly-nosh-screen.mp4"
+                autoPlay loop muted playsInline
+                style={{
+                  position: "absolute",
+                  top: "1.9%",
+                  left: "4.3%",
+                  width: "91.9%",
+                  height: "96.2%",
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  display: "block",
+                  borderRadius: "10%",
+                }}
+              />
+              {/* Phone frame overlay (transparent screen) */}
+              <Image
+                src="/projects/daly-nosh/splash-frame.png"
+                alt="Daly Nosh phone frame"
+                fill
+                style={{ objectFit: "contain", zIndex: 1, position: "absolute" }}
+              />
+            </div>
           </motion.div>
         </section>
 
