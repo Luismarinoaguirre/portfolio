@@ -256,27 +256,47 @@ export default function FutureInfinit() {
             </p>
           </motion.div>
           <motion.div
-            style={{ flexShrink: 0, width: "360px" }}
+            style={{ flexShrink: 0, width: "300px" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeIn}
             custom={0.3}
           >
-            <video
-              src="/videos/future-infinit-mobile.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: "28px",
-                display: "block",
-                filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.3))",
-              }}
-            />
+            {/* Phone mockup shell */}
+            <div style={{ position: "relative", filter: "drop-shadow(0 40px 80px rgba(196,30,30,0.25))" }}>
+              {/* Side buttons */}
+              <div style={{ position: "absolute", right: "-4px", top: "110px", width: "4px", height: "44px", background: "#2c2c2e", borderRadius: "0 3px 3px 0" }} />
+              <div style={{ position: "absolute", left: "-4px", top: "88px", width: "4px", height: "32px", background: "#2c2c2e", borderRadius: "3px 0 0 3px" }} />
+              <div style={{ position: "absolute", left: "-4px", top: "132px", width: "4px", height: "56px", background: "#2c2c2e", borderRadius: "3px 0 0 3px" }} />
+
+              {/* Frame + screen */}
+              <div
+                style={{
+                  border: "10px solid #1c1c1e",
+                  borderRadius: "44px",
+                  overflow: "hidden",
+                  background: "#000",
+                  boxShadow: "inset 0 0 0 1px #3a3a3a",
+                  position: "relative",
+                }}
+              >
+                {/* Dynamic Island */}
+                <div style={{
+                  position: "absolute", top: 0, left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "80px", height: "26px",
+                  background: "#1c1c1e",
+                  borderRadius: "0 0 18px 18px",
+                  zIndex: 2,
+                }} />
+                <video
+                  src="/videos/future-infinit-mobile.mp4"
+                  autoPlay loop muted playsInline
+                  style={{ width: "100%", display: "block" }}
+                />
+              </div>
+            </div>
           </motion.div>
         </section>
 
