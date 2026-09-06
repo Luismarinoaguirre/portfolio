@@ -2,6 +2,13 @@
 
 import AnimatedText from "./AnimatedText";
 import FadeIn from "./FadeIn";
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldSet,
+} from "./ui/field";
+import { Input, Textarea } from "./ui/input";
 
 export default function Contact() {
   return (
@@ -10,68 +17,70 @@ export default function Contact() {
       className="section-px"
       style={{ paddingTop: "clamp(80px, 12vw, 160px)", paddingBottom: "clamp(80px, 12vw, 160px)" }}
     >
-      <div className="section-container">
+      <div className="section-container" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         {/* Phrase */}
         <FadeIn>
           <p
-            className="text-foreground font-light leading-[1.15] tracking-[-0.03em]"
-            style={{ fontSize: "clamp(22px, 4vw, 52px)", maxWidth: "700px", marginBottom: "80px" }}
+            className="text-foreground font-light leading-[1.15] tracking-[-0.03em] text-center"
+            style={{ fontSize: "clamp(22px, 4vw, 52px)", maxWidth: "700px", marginBottom: "clamp(40px, 6vw, 80px)" }}
           >
-            Have a role or a project in mind?{" "}
-            <span className="text-muted">
-              Let&apos;s build something worth using.
-            </span>
+            Want to work together?
+            <br />
+            <span className="text-muted">Reach out!</span>
           </p>
         </FadeIn>
 
-        {/* Email */}
-        <div style={{ marginBottom: "64px" }}>
-          <FadeIn delay={0.15}>
-            <span
-              className="text-accent font-mono uppercase block"
-              style={{ fontSize: "13px", letterSpacing: "0.15em", marginBottom: "20px" }}
-            >
-              Email Me
-            </span>
-          </FadeIn>
-          <FadeIn delay={0.25}>
-            <a
-              href="mailto:luismarinoaguirree@gmail.com"
-              className="text-foreground hover:text-accent transition-colors duration-300 font-light leading-none block"
-              style={{ fontSize: "clamp(20px, 5.5vw, 72px)", letterSpacing: "-0.03em", wordBreak: "break-all", overflowWrap: "anywhere" }}
-            >
-              luismarinoaguirree@gmail.com
-            </a>
-          </FadeIn>
-        </div>
+        {/* Contact Form */}
+        <FadeIn delay={0.15} className="w-full" style={{ maxWidth: "800px" }}>
+          <form
+            action="https://formsubmit.co/luismarinoaguirree@gmail.com"
+            method="POST"
+            style={{ width: "100%" }}
+          >
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
 
-        {/* WhatsApp / Phone */}
-        <div style={{ marginBottom: "80px" }}>
-          <FadeIn delay={0.35}>
-            <span
-              className="text-accent font-mono uppercase block"
-              style={{ fontSize: "13px", letterSpacing: "0.15em", marginBottom: "20px" }}
-            >
-              Message Me
-            </span>
-          </FadeIn>
-          <FadeIn delay={0.45}>
-            <a
-              href="https://wa.me/5491112345678"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-accent transition-colors duration-300 font-light leading-none block"
-              style={{ fontSize: "clamp(20px, 5.5vw, 72px)", letterSpacing: "-0.03em", wordBreak: "break-word", overflowWrap: "anywhere" }}
-            >
-              +54 9 11 1234-5678
-            </a>
-          </FadeIn>
-        </div>
+            <FieldSet className="w-full">
+              <FieldGroup>
+                <Field>
+                  <FieldLabel htmlFor="name">Name</FieldLabel>
+                  <Input id="name" name="name" type="text" placeholder="Jane Smith" required />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                  <Input id="email" name="email" type="email" placeholder="jane@framer.com" required />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="message">Message</FieldLabel>
+                  <Textarea id="message" name="message" placeholder="What cool project do you need help with?" required />
+                </Field>
+              </FieldGroup>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="w-full font-medium transition-all duration-200 hover:opacity-90 active:scale-[0.99]"
+                style={{
+                  padding: "16px",
+                  fontSize: "15px",
+                  borderRadius: "12px",
+                  backgroundColor: "var(--accent)",
+                  color: "var(--background)",
+                  border: "none",
+                  cursor: "pointer",
+                  marginTop: "8px",
+                }}
+              >
+                Submit
+              </button>
+            </FieldSet>
+          </form>
+        </FadeIn>
 
         {/* Divider + socials */}
-        <FadeIn delay={0.55}>
-          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "40px" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "24px" }}>
+        <FadeIn delay={0.35} className="w-full" style={{ maxWidth: "800px" }}>
+          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "clamp(24px, 4vw, 40px)", marginTop: "clamp(40px, 6vw, 80px)" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", justifyContent: "center" }}>
               <a
                 href="https://www.linkedin.com/in/luis-bautista-marino-aguirre-28aa96203/"
                 target="_blank"
@@ -89,13 +98,22 @@ export default function Contact() {
                 Email
               </a>
               <a
-                href="https://wa.me/5491112345678"
+                href="https://github.com/Luismarinoaguirre"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-foreground transition-colors duration-300"
                 style={{ fontSize: "14px" }}
               >
-                WhatsApp
+                GitHub
+              </a>
+              <a
+                href="https://www.behance.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-foreground transition-colors duration-300"
+                style={{ fontSize: "14px" }}
+              >
+                Behance
               </a>
             </div>
           </div>

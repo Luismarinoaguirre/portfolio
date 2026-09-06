@@ -30,7 +30,7 @@
 
 /* ── Dark theme ── */
 [data-theme="dark"] {
-  --background: #1a1a1a;
+  --background: #050505;
   --foreground: #ebebeb;
   --accent: #FFD000;
   --accent-rgb: 255, 208, 0;
@@ -84,6 +84,18 @@
   --color-hover-bg: var(--hover-bg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
 }
 
 * {
@@ -103,12 +115,13 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
   transition: background-color 0.45s ease, color 0.45s ease;
 }
 
-a, button, canvas, div {
-  cursor: none;
+@media (pointer: fine) {
+  body, a, button, canvas, div {
+    cursor: none;
+  }
 }
 
 /* ── Logo carousel — monochrome adaptive filter ── */
@@ -151,26 +164,48 @@ a, button, canvas, div {
   opacity: 1;
 }
 
-/* Services section — single column always */
-.services-layout {
-  flex-direction: column;
+/* Services section — responsive grid */
+.service-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.service-skills-list {
+  border-top: 1px solid var(--border);
+  padding-top: clamp(16px, 2vw, 24px);
+}
+@media (min-width: 768px) {
+  .service-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-skills-list {
+    border-top: none;
+    padding-top: 0;
+    border-left: 1px solid var(--border);
+    padding-left: clamp(24px, 4vw, 64px);
+  }
 }
 
-/* Apple Cards Carousel — responsive card sizes */
+
+/* Projects sticky — clear navbar */
+.project-sticky-viewport {
+  padding-top: clamp(80px, 10vw, 120px);
+}
+
+/* Apple Cards Carousel — responsive card sizes, capped to available viewport */
 .card-carousel-item {
   width: 260px;
-  height: 360px;
+  height: min(360px, calc(100vh - 240px));
 }
 @media (min-width: 768px) {
   .card-carousel-item {
     width: 384px;
-    height: 540px;
+    height: min(540px, calc(100vh - 280px));
   }
 }
 @media (min-width: 1280px) {
   .card-carousel-item {
     width: 384px;
-    height: 640px;
+    height: min(640px, calc(100vh - 320px));
   }
 }
 
@@ -206,37 +241,6 @@ html.lenis, html.lenis body {
   background: var(--muted);
 }
 
-/* ── Theme Toggle ── */
-.theme-toggle {
-  position: relative;
-  z-index: 60;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border-radius: 50%;
-  background: var(--foreground);
-  border: 1px solid var(--foreground);
-  color: var(--background);
-  box-shadow: 0 8px 22px -8px rgba(0, 0, 0, 0.4);
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
-              background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
-}
-.theme-toggle:hover {
-  transform: translateY(-2px) scale(1.05);
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #ffffff;
-  box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb), 0.55);
-}
-.theme-toggle .icon-sun  { display: none; }
-.theme-toggle .icon-moon { display: block; }
-[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ── Terminal ── */
 .terminal-line {

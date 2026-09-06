@@ -13,29 +13,52 @@ const navItems = [
 ];
 
 function ThemeToggle() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
+  }, []);
+
   const toggle = () => {
-    const current = document.documentElement.getAttribute("data-theme") || "light";
-    const next = current === "light" ? "dark" : "light";
+    const next = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("portfolio-theme", next);
+    setIsDark(!isDark);
   };
 
   return (
     <button
       onClick={toggle}
-      className="theme-toggle"
+      role="switch"
+      aria-checked={isDark}
       aria-label="Switch theme"
-      title="Toggle dark / light mode"
+      style={{
+        position: "relative",
+        zIndex: 60,
+        width: "50px",
+        height: "28px",
+        padding: "2px",
+        borderRadius: "999px",
+        border: "none",
+        background: isDark ? "var(--accent)" : "var(--fg-20)",
+        flexShrink: 0,
+        cursor: "pointer",
+        transition: "background 0.3s",
+      }}
     >
-      {/* Moon — shown in light mode via CSS */}
-      <svg className="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z" />
-      </svg>
-      {/* Sun — shown in dark mode via CSS */}
-      <svg className="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-      </svg>
+      <span
+        style={{
+          display: "block",
+          width: "24px",
+          height: "24px",
+          borderRadius: "50%",
+          background: "#ffffff",
+          boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
+          transform: isDark ? "translateX(22px)" : "translateX(0)",
+          transition: "transform 0.3s cubic-bezier(0.33, 1, 0.68, 1)",
+          pointerEvents: "none",
+        }}
+      />
     </button>
   );
 }

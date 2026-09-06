@@ -1,51 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
-import { SparklesCore } from "./ui/sparkles";
-
-const rotatingWords = ["connect.", "inspire.", "impact.", "matter.", "resonate."];
+import { CanvasText } from "./ui/canvas-text";
+import { TextRoll } from "./ui/text-roll";
 
 export default function Hero() {
-  const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden section-px">
-      {/* Sparkles — hidden in light mode via CSS (.hero-sparkles-wrap) */}
-      <div className="hero-sparkles-wrap absolute inset-0 w-full h-full">
-        <SparklesCore
-          id="hero-sparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          speed={1.5}
-          particleDensity={1200}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            background: "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 20%, var(--background) 80%)",
-          }}
-        />
-      </div>
-      {/* Ambient glow — navy in light mode, hidden in dark */}
-      <div
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 70% 55% at 50% 45%, rgba(var(--accent-rgb, 0,51,160), 0.12), transparent 60%)",
-        }}
-      />
-
       <div className="section-container w-full text-center relative z-20">
         {/* Role tag */}
         <FadeIn delay={0.3}>
@@ -63,28 +25,32 @@ export default function Hero() {
             className="leading-[1.05] tracking-[-0.03em] text-foreground"
             style={{ fontWeight: 800, fontSize: "clamp(2rem, 6vw, 5.5rem)", marginBottom: "clamp(20px, 3vw, 32px)" }}
           >
-            Designing digital
-            <br />
-            experiences that{" "}
-            <span
-              className="relative inline-flex justify-start"
-              style={{ width: "clamp(140px, 22vw, 360px)", verticalAlign: "baseline" }}
+            <TextRoll
+              duration={0.5}
+              getEnterDelay={(i) => i * 0.04}
+              getExitDelay={(i) => i * 0.04 + 0.15}
             >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={rotatingWords[wordIndex]}
-                  className="text-accent absolute left-0"
-                  initial={{ y: 30, opacity: 0, filter: "blur(4px)" }}
-                  animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                  exit={{ y: -30, opacity: 0, filter: "blur(4px)" }}
-                  transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
-                >
-                  {rotatingWords[wordIndex]}
-                </motion.span>
-              </AnimatePresence>
-              {/* Invisible text to hold height */}
-              <span className="invisible">resonate.</span>
-            </span>
+              Designing digital experiences that make an
+            </TextRoll>
+            <br />
+            <CanvasText
+              text="impact."
+              backgroundClassName="bg-[var(--background)]"
+              colors={[
+                "rgba(var(--accent-rgb), 1)",
+                "rgba(var(--accent-rgb), 0.9)",
+                "rgba(var(--accent-rgb), 0.8)",
+                "rgba(var(--accent-rgb), 0.7)",
+                "rgba(var(--accent-rgb), 0.6)",
+                "rgba(var(--accent-rgb), 0.5)",
+                "rgba(var(--accent-rgb), 0.4)",
+                "rgba(var(--accent-rgb), 0.3)",
+                "rgba(var(--accent-rgb), 0.2)",
+                "rgba(var(--accent-rgb), 0.1)",
+              ]}
+              lineGap={4}
+              animationDuration={20}
+            />
           </h1>
         </FadeIn>
 

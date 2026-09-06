@@ -53,7 +53,7 @@ export default function LogoCarousel() {
         className="text-center text-muted text-xs font-mono tracking-[0.2em] uppercase"
         style={{ marginBottom: "clamp(24px, 3vw, 40px)" }}
       >
-        Trusted by
+        Brands I&apos;ve worked with
       </p>
 
       {/* Scrolling track */}

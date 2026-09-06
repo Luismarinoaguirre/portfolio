@@ -12,7 +12,6 @@ export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [maxScroll, setMaxScroll] = useState(1600);
 
-  // Calculate how far we need to translate based on track width vs viewport
   useEffect(() => {
     const calculate = () => {
       if (trackRef.current) {
@@ -31,10 +30,8 @@ export default function Projects() {
     offset: ["start start", "end end"],
   });
 
-  // Map vertical scroll → horizontal movement
   const x = useTransform(scrollYProgress, [0.05, 0.95], [0, -maxScroll]);
 
-  // Arrow navigation: scroll the page to move horizontal track
   const navigateCards = useCallback(
     (direction: "prev" | "next") => {
       if (!sectionRef.current) return;
@@ -42,19 +39,13 @@ export default function Projects() {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
       const scrollableRange = sectionHeight - window.innerHeight;
-
-      // Each card step = total scrollable range / number of projects
       const step = scrollableRange / projects.length;
       const currentScroll = window.scrollY - sectionTop;
       const targetScroll =
         direction === "next"
           ? Math.min(currentScroll + step, scrollableRange)
           : Math.max(currentScroll - step, 0);
-
-      window.scrollTo({
-        top: sectionTop + targetScroll,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: sectionTop + targetScroll, behavior: "smooth" });
     },
     []
   );
@@ -66,8 +57,8 @@ export default function Projects() {
       style={{ height: `${Math.max(300, projects.length * 55)}vh` }}
     >
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        {/* Header with arrows */}
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden project-sticky-viewport">
+        {/* Header */}
         <div className="section-px" style={{ marginBottom: "clamp(24px, 3vw, 48px)" }}>
           <div className="section-container">
             <div className="flex items-end justify-between">
@@ -89,7 +80,6 @@ export default function Projects() {
                 </FadeIn>
               </div>
 
-              {/* Arrow buttons */}
               <FadeIn delay={0.3}>
                 <div className="flex items-center" style={{ gap: "12px" }}>
                   <button

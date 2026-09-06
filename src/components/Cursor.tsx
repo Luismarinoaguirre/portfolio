@@ -1,14 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// 3 mm ≈ 11.34 px at 96 dpi — rounded to 11 px
 const SIZE = 11;
 
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
+  const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
+    setIsPointerFine(window.matchMedia("(pointer: fine)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (!isPointerFine) return;
+
     const half = SIZE / 2;
 
     const onMove = (e: MouseEvent) => {
@@ -33,7 +39,9 @@ export default function Cursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, []);
+  }, [isPointerFine]);
+
+  if (!isPointerFine) return null;
 
   return (
     <div
