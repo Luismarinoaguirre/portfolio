@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 const SIZE = 11;
+const noop = () => () => {};
+const getPointerFine = () => window.matchMedia("(pointer: fine)").matches;
+const getServerSnapshot = () => false;
 
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const [isPointerFine, setIsPointerFine] = useState(false);
-
-  useEffect(() => {
-    setIsPointerFine(window.matchMedia("(pointer: fine)").matches);
-  }, []);
+  const isPointerFine = useSyncExternalStore(noop, getPointerFine, getServerSnapshot);
 
   useEffect(() => {
     if (!isPointerFine) return;

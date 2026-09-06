@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { GooeyInput } from "./ui/gooey-input";
@@ -12,18 +12,23 @@ const navItems = [
   { label: "Contact", href: "/#contact" },
 ];
 
-function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+function subscribeTheme(cb: () => void) {
+  const observer = new MutationObserver(cb);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => observer.disconnect();
+}
+function getThemeSnapshot() {
+  return document.documentElement.getAttribute("data-theme") === "dark";
+}
+const getThemeServerSnapshot = () => false;
 
-  useEffect(() => {
-    setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
-  }, []);
+function ThemeToggle() {
+  const isDark = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getThemeServerSnapshot);
 
   const toggle = () => {
     const next = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("portfolio-theme", next);
-    setIsDark(!isDark);
   };
 
   return (
