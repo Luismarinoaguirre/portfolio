@@ -49,6 +49,31 @@ export default function About() {
             thinker and the eye of a visual designer.
           </p>
         </FadeIn>
+        <FadeIn delay={0.4}>
+          <a
+            href="/Luis-Marino-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium transition-all duration-200 hover:opacity-85 active:scale-[0.97]"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "12px 28px",
+              fontSize: "15px",
+              borderRadius: "999px",
+              backgroundColor: "var(--accent)",
+              color: "var(--background)",
+              textDecoration: "none",
+              marginTop: "clamp(16px, 2vw, 24px)",
+            }}
+          >
+            Download CV
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2v8.5M4.5 7.5 8 11l3.5-3.5M3 13.5h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </FadeIn>
       </div>
 
       {/* Part 2: Photo with name overlay */}
