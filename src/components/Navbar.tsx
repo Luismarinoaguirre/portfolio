@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { GooeyInput } from "./ui/gooey-input";
 
@@ -109,21 +110,22 @@ export default function Navbar() {
             style={{
               width: "52px",
               height: "52px",
-              borderRadius: "12px",
-              border: "1.5px solid var(--foreground)",
-              background: "var(--glass-soft)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontWeight: 700,
-              fontSize: "18px",
-              color: "var(--foreground)",
               textDecoration: "none",
               flexShrink: 0,
               transition: "opacity 0.3s",
             }}
           >
-            LM
+            <Image
+              src="/logo-3d.png"
+              alt="LM"
+              width={52}
+              height={52}
+              style={{ objectFit: "contain" }}
+              priority
+            />
           </Link>
 
           {/* Desktop — centered pill nav */}
