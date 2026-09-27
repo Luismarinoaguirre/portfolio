@@ -108,8 +108,8 @@ export default function Navbar() {
           <Link
             href="/#top"
             style={{
-              width: "52px",
-              height: "52px",
+              width: "90px",
+              height: "90px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -121,8 +121,8 @@ export default function Navbar() {
             <Image
               src="/logo-3d.png"
               alt="LM"
-              width={52}
-              height={52}
+              width={90}
+              height={90}
               style={{ objectFit: "contain" }}
               priority
             />
