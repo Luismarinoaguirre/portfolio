@@ -157,16 +157,87 @@ export default function FutureInfinit() {
           />
         </section>
 
-        {/* ── Desktop Mockup (iMac) ── */}
+        {/* ── Overview ── */}
         <motion.section
-          style={{ padding: "100px 112px 120px", position: "relative" }}
+          style={{ padding: "80px 112px 100px", borderTop: `1px solid ${FI.border}` }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeIn}
           custom={0.1}
         >
-          <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "40px" }}>
+            {[
+              { label: "Role", value: "UX/UI Designer" },
+              { label: "Type", value: "E-Commerce Platform" },
+              { label: "Tools", value: "Figma, Wix" },
+              { label: "Timeline", value: "4 Weeks" },
+            ].map((item) => (
+              <div key={item.label}>
+                <p style={{ fontFamily: "var(--font-mono-project)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: FI.red, marginBottom: "12px" }}>
+                  {item.label}
+                </p>
+                <p style={{ fontFamily: "var(--font-body-project)", fontSize: "16px", fontWeight: 400, color: FI.fg }}>
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* ── The Challenge ── */}
+        <section style={{ padding: "100px 112px 120px" }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontFamily: "var(--font-mono-project)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: FI.red, marginBottom: "20px" }}>
+              The Challenge
+            </p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(48px, 5vw, 72px)", lineHeight: 1, marginBottom: "48px" }}>
+              Beyond a<br />Storefront
+            </h2>
+          </motion.div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
+            <motion.p
+              style={{ fontSize: "15px", lineHeight: "1.9", color: FI.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeIn}
+              custom={0.2}
+            >
+              How do you make an e-commerce platform feel as disruptive as the product it sells?
+              Future Infinit needed more than a storefront — it needed a digital experience that
+              matched the raw energy of self-lacing technology and urban street culture.
+            </motion.p>
+            <motion.p
+              style={{ fontSize: "15px", lineHeight: "1.9", color: FI.muted, fontFamily: "var(--font-body-project)", fontWeight: 300 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeIn}
+              custom={0.35}
+            >
+              The approach combined editorial-grade typography with immersive product photography,
+              creating a shopping flow where every interaction reinforces the brand&apos;s bold
+              identity — from discovery to checkout, built for speed and visual impact.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* ── Desktop Mockup (iMac) ── */}
+        <section style={{ padding: "100px 112px 120px", position: "relative", overflow: "hidden" }}>
+          <motion.div
+            style={{ maxWidth: "1000px", margin: "0 auto", position: "relative" }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <div style={{
               position: "absolute", top: "50%", left: "50%",
               transform: "translate(-50%, -50%)",
@@ -218,8 +289,8 @@ export default function FutureInfinit() {
             }}>
               01
             </span>
-          </div>
-        </motion.section>
+          </motion.div>
+        </section>
 
         {/* ── Mockup Split ── */}
         <motion.div
@@ -279,7 +350,7 @@ export default function FutureInfinit() {
         </motion.div>
 
         {/* ── Mobile ── */}
-        <section style={{ padding: "120px 112px", display: "flex", alignItems: "center", gap: "80px" }}>
+        <section style={{ padding: "120px 112px", display: "flex", alignItems: "center", gap: "80px", overflow: "hidden" }}>
           <motion.div
             style={{ flex: 1 }}
             initial="hidden"
@@ -354,6 +425,77 @@ export default function FutureInfinit() {
               </div>
             </div>
           </motion.div>
+        </section>
+
+        {/* ── Key Features ── */}
+        <section style={{ padding: "120px 112px", borderTop: `1px solid ${FI.border}` }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            custom={0.1}
+          >
+            <p style={{ fontFamily: "var(--font-mono-project)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: FI.red, marginBottom: "20px" }}>
+              Highlights
+            </p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(48px, 5vw, 72px)", lineHeight: 1, marginBottom: "60px" }}>
+              Key Features
+            </h2>
+          </motion.div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
+            {[
+              {
+                number: "01",
+                title: "Bold Visual Identity",
+                desc: "Full-bleed imagery and aggressive typography create an editorial shopping experience that sets the brand apart from conventional e-commerce.",
+              },
+              {
+                number: "02",
+                title: "Seamless Purchase Flow",
+                desc: "From product discovery to checkout, every step is designed for speed and clarity — reducing friction while maintaining visual impact.",
+              },
+              {
+                number: "03",
+                title: "Cross-Platform Consistency",
+                desc: "The mobile experience maintains the same energy and editorial quality as desktop, ensuring a cohesive brand presence across all devices.",
+              },
+            ].map((feature, i) => (
+              <motion.div
+                key={feature.number}
+                style={{
+                  padding: "36px",
+                  background: "#111",
+                  borderRadius: "16px",
+                  border: `1px solid ${FI.border}`,
+                }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeIn}
+                custom={0.1 + i * 0.15}
+              >
+                <span style={{
+                  fontFamily: "var(--font-display)", fontSize: "48px",
+                  color: FI.red, opacity: 0.3, lineHeight: 1, display: "block", marginBottom: "20px",
+                }}>
+                  {feature.number}
+                </span>
+                <h3 style={{
+                  fontFamily: "var(--font-display)", fontSize: "24px",
+                  marginBottom: "12px", lineHeight: 1.2,
+                }}>
+                  {feature.title}
+                </h3>
+                <p style={{
+                  fontFamily: "var(--font-body-project)", fontSize: "14px",
+                  lineHeight: "1.7", color: FI.muted, fontWeight: 300,
+                }}>
+                  {feature.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* ── Color Palette ── */}
