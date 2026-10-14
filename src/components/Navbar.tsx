@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { GooeyInput } from "./ui/gooey-input";
 
 const navItems = [
-  { label: "Projects", href: "/#projects" },
-  { label: "Services", href: "/#services" },
-  { label: "About Me", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Projects", hash: "#projects" },
+  { label: "Services", hash: "#services" },
+  { label: "About Me", hash: "#about" },
+  { label: "Contact", hash: "#contact" },
 ];
 
 function subscribeTheme(cb: () => void) {
@@ -73,6 +74,31 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const scrollToSection = useCallback((hash: string) => {
+    const scrollTo = () => {
+      if (window.lenis) {
+        window.lenis.scrollTo(hash, { duration: 1.4, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
+      } else {
+        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    if (pathname === "/") {
+      scrollTo();
+    } else {
+      router.push("/");
+      const check = setInterval(() => {
+        if (document.querySelector(hash)) {
+          clearInterval(check);
+          setTimeout(scrollTo, 100);
+        }
+      }, 50);
+      setTimeout(() => clearInterval(check), 3000);
+    }
+  }, [pathname, router]);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -145,16 +171,18 @@ export default function Navbar() {
               }}
             >
               {navItems.map((item) => (
-                <Link
+                <button
                   key={item.label}
-                  href={item.href}
+                  onClick={() => scrollToSection(item.hash)}
                   style={{
                     padding: "clamp(10px, 1.5vw, 14px) clamp(16px, 2.5vw, 28px)",
                     fontSize: "clamp(14px, 1.4vw, 16px)",
                     whiteSpace: "nowrap",
                     color: "var(--muted)",
                     borderRadius: "999px",
-                    textDecoration: "none",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
                     transition: "color 0.3s, background 0.3s",
                   }}
                   onMouseEnter={(e) => {
@@ -167,7 +195,7 @@ export default function Navbar() {
                   }}
                 >
                   {item.label}
-                </Link>
+                </button>
               ))}
             </nav>
           </div>
@@ -222,19 +250,23 @@ export default function Navbar() {
                   exit={{ opacity: 0, y: 30 }}
                   transition={{ delay: i * 0.08 }}
                 >
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsMobileOpen(false)}
+                  <button
+                    onClick={() => {
+                      setIsMobileOpen(false);
+                      scrollToSection(item.hash);
+                    }}
                     style={{
                       fontSize: "36px",
                       fontWeight: 300,
                       color: "var(--foreground)",
-                      textDecoration: "none",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
                       transition: "color 0.3s",
                     }}
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
               <motion.div

@@ -157,43 +157,65 @@ export default function FutureInfinit() {
           />
         </section>
 
-        {/* ── Website Demo Video (full-bleed) ── */}
+        {/* ── Desktop Mockup (iMac) ── */}
         <motion.section
-          style={{ position: "relative", overflow: "hidden" }}
+          style={{ padding: "100px 112px 120px", position: "relative" }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeIn}
           custom={0.1}
         >
-          <div style={{ position: "relative", width: "100%", height: "85vh", overflow: "hidden" }}>
-            <video
-              src="/videos/future-infinit-hero.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "top",
-                display: "block",
-              }}
-            />
-            <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 60%, ${FI.bg} 100%)` }} />
-            <span
-              style={{
-                position: "absolute",
-                bottom: "40px",
-                right: "112px",
-                fontFamily: "var(--font-display)",
-                fontSize: "80px",
-                color: FI.red,
-                lineHeight: 1,
-                opacity: 0.9,
-              }}
-            >
+          <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative" }}>
+            <div style={{
+              position: "absolute", top: "50%", left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "80%", height: "60%",
+              background: "radial-gradient(ellipse, rgba(196,30,30,0.08) 0%, transparent 70%)",
+              pointerEvents: "none", filter: "blur(40px)",
+            }} />
+
+            <div style={{
+              background: "linear-gradient(180deg, #3a3a3c 0%, #2c2c2e 50%, #1c1c1e 100%)",
+              borderRadius: "18px 18px 2px 2px",
+              padding: "12px 12px 0 12px",
+              boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)",
+              position: "relative",
+            }}>
+              <div style={{
+                position: "absolute", top: "5px", left: "50%", transform: "translateX(-50%)",
+                width: "4px", height: "4px", borderRadius: "50%",
+                background: "#0a0a0a", boxShadow: "inset 0 0 2px rgba(255,255,255,0.15)", zIndex: 2,
+              }} />
+              <div style={{ borderRadius: "4px", overflow: "hidden", position: "relative", background: "#000" }}>
+                <video src="/videos/future-infinit-hero.mp4" autoPlay loop muted playsInline style={{ width: "100%", display: "block" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%)", pointerEvents: "none" }} />
+              </div>
+            </div>
+
+            <div style={{
+              height: "28px",
+              background: "linear-gradient(180deg, #2c2c2e, #3a3a3c)",
+              borderRadius: "0 0 18px 18px",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+            }} />
+            <div style={{
+              width: "100px", height: "70px", margin: "0 auto",
+              background: "linear-gradient(90deg, #2c2c2e, #3a3a3c, #2c2c2e)",
+              clipPath: "polygon(20% 0, 80% 0, 100% 100%, 0% 100%)",
+            }} />
+            <div style={{
+              width: "220px", height: "8px", margin: "-1px auto 0",
+              background: "linear-gradient(180deg, #3a3a3c, #2c2c2e)",
+              borderRadius: "0 0 4px 4px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+            }} />
+
+            <span style={{
+              position: "absolute", top: "-20px", right: "-40px",
+              fontFamily: "var(--font-display)", fontSize: "80px",
+              color: FI.red, lineHeight: 1, opacity: 0.15,
+            }}>
               01
             </span>
           </div>
@@ -208,7 +230,6 @@ export default function FutureInfinit() {
           variants={fadeIn}
           custom={0.1}
         >
-          {/* Red panel */}
           <div style={{ padding: "80px 112px", display: "flex", flexDirection: "column", justifyContent: "center", background: FI.red }}>
             <p style={{ fontFamily: "var(--font-mono-project)", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "20px" }}>
               Product Presentation
@@ -221,18 +242,44 @@ export default function FutureInfinit() {
               connection between urban technology and organic elements that inspire the brand.
             </p>
           </div>
-          {/* Composite video: video baked into mockup photo via ffmpeg */}
-          <div style={{ position: "relative", overflow: "hidden" }}>
-            <video
-              src="/videos/future-infinit-mockup-composite.mp4"
-              autoPlay loop muted playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
-            />
+          <div style={{
+            position: "relative", overflow: "hidden", background: "#111",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: "60px 40px",
+          }}>
+            <div style={{ width: "260px", position: "relative" }}>
+              <div style={{ position: "absolute", right: "-3px", top: "120px", width: "3px", height: "58px", background: "linear-gradient(to right, #3a3a3c, #48484a)", borderRadius: "0 2px 2px 0", boxShadow: "1px 0 2px rgba(0,0,0,0.6)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "90px", width: "3px", height: "28px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 2px rgba(0,0,0,0.6)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "132px", width: "3px", height: "48px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 2px rgba(0,0,0,0.6)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "190px", width: "3px", height: "48px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 2px rgba(0,0,0,0.6)" }} />
+
+              <div style={{
+                borderRadius: "46px", padding: "2px",
+                background: "linear-gradient(145deg, #4a4a4c 0%, #2a2a2c 40%, #3a3a3c 70%, #1c1c1e 100%)",
+                boxShadow: "0 40px 80px rgba(0,0,0,0.7), 0 15px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+              }}>
+                <div style={{
+                  borderRadius: "44px", padding: "9px", background: "#1c1c1e",
+                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 2px 4px rgba(0,0,0,0.8)",
+                }}>
+                  <div style={{ borderRadius: "36px", overflow: "hidden", position: "relative", background: "#000" }}>
+                    <div style={{
+                      position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)",
+                      width: "90px", height: "26px", background: "#000", borderRadius: "20px",
+                      zIndex: 3, boxShadow: "0 0 0 1px rgba(255,255,255,0.04)",
+                    }} />
+                    <video src="/videos/future-infinit-mockup-composite.mp4" autoPlay loop muted playsInline style={{ width: "100%", display: "block" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%)", pointerEvents: "none", zIndex: 2, borderRadius: "36px" }} />
+                    <div style={{ position: "absolute", bottom: "6px", left: "50%", transform: "translateX(-50%)", width: "90px", height: "4px", background: "rgba(255,255,255,0.3)", borderRadius: "2px", zIndex: 3 }} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* ── Mobile ── */}
-        <section style={{ padding: "120px 112px", display: "flex", alignItems: "flex-start", gap: "80px" }}>
+        <section style={{ padding: "120px 112px", display: "flex", alignItems: "center", gap: "80px" }}>
           <motion.div
             style={{ flex: 1 }}
             initial="hidden"
@@ -253,106 +300,55 @@ export default function FutureInfinit() {
             </p>
           </motion.div>
           <motion.div
-            style={{ flexShrink: 0, width: "280px" }}
+            style={{ flexShrink: 0, width: "320px", position: "relative" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeIn}
             custom={0.3}
           >
-            {/* ── Realistic iPhone mockup ── */}
+            <div style={{
+              position: "absolute", top: "50%", left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "200%", height: "120%",
+              background: "radial-gradient(ellipse, rgba(196,30,30,0.1) 0%, transparent 60%)",
+              pointerEvents: "none", filter: "blur(30px)",
+            }} />
+
             <div style={{ position: "relative" }}>
+              <div style={{ position: "absolute", right: "-3px", top: "140px", width: "3px", height: "65px", background: "linear-gradient(to right, #3a3a3c, #48484a)", borderRadius: "0 2px 2px 0", boxShadow: "1px 0 3px rgba(0,0,0,0.7)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "105px", width: "3px", height: "30px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 3px rgba(0,0,0,0.7)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "152px", width: "3px", height: "55px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 3px rgba(0,0,0,0.7)" }} />
+              <div style={{ position: "absolute", left: "-3px", top: "218px", width: "3px", height: "55px", background: "linear-gradient(to left, #3a3a3c, #48484a)", borderRadius: "2px 0 0 2px", boxShadow: "-1px 0 3px rgba(0,0,0,0.7)" }} />
 
-              {/* Power button (right) */}
               <div style={{
-                position: "absolute", right: "-3px", top: "130px",
-                width: "3px", height: "62px",
-                background: "linear-gradient(to right, #3a3a3c, #48484a)",
-                borderRadius: "0 2px 2px 0",
-                boxShadow: "1px 0 2px rgba(0,0,0,0.6)",
-              }} />
-              {/* Silent toggle (left) */}
-              <div style={{
-                position: "absolute", left: "-3px", top: "100px",
-                width: "3px", height: "32px",
-                background: "linear-gradient(to left, #3a3a3c, #48484a)",
-                borderRadius: "2px 0 0 2px",
-                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
-              }} />
-              {/* Volume up (left) */}
-              <div style={{
-                position: "absolute", left: "-3px", top: "148px",
-                width: "3px", height: "52px",
-                background: "linear-gradient(to left, #3a3a3c, #48484a)",
-                borderRadius: "2px 0 0 2px",
-                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
-              }} />
-              {/* Volume down (left) */}
-              <div style={{
-                position: "absolute", left: "-3px", top: "210px",
-                width: "3px", height: "52px",
-                background: "linear-gradient(to left, #3a3a3c, #48484a)",
-                borderRadius: "2px 0 0 2px",
-                boxShadow: "-1px 0 2px rgba(0,0,0,0.6)",
-              }} />
-
-              {/* Outer frame — titanium edge */}
-              <div style={{
-                borderRadius: "50px",
-                padding: "2px",
-                background: "linear-gradient(145deg, #4a4a4c 0%, #2a2a2c 40%, #3a3a3c 70%, #1c1c1e 100%)",
-                boxShadow: "0 50px 100px rgba(0,0,0,0.8), 0 20px 40px rgba(196,30,30,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
+                borderRadius: "52px", padding: "2px",
+                background: "linear-gradient(145deg, #58585a 0%, #3a3a3c 30%, #2a2a2c 60%, #48484a 80%, #1c1c1e 100%)",
+                boxShadow: "0 50px 100px rgba(0,0,0,0.8), 0 25px 50px rgba(0,0,0,0.5), 0 20px 40px rgba(196,30,30,0.12), inset 0 1px 0 rgba(255,255,255,0.1)",
               }}>
-                {/* Inner bezel */}
                 <div style={{
-                  borderRadius: "48px",
-                  padding: "10px",
-                  background: "#1c1c1e",
-                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 2px 4px rgba(0,0,0,0.8)",
+                  borderRadius: "50px", padding: "10px", background: "#1c1c1e",
+                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 2px 6px rgba(0,0,0,0.9)",
                 }}>
-                  {/* Screen area */}
-                  <div style={{
-                    borderRadius: "40px",
-                    overflow: "hidden",
-                    position: "relative",
-                    background: "#000",
-                  }}>
-                    {/* Dynamic Island */}
+                  <div style={{ borderRadius: "42px", overflow: "hidden", position: "relative", background: "#000" }}>
                     <div style={{
-                      position: "absolute", top: 0, left: "50%",
-                      transform: "translateX(-50%)",
-                      width: "88px", height: "30px",
-                      background: "#000",
-                      borderRadius: "0 0 20px 20px",
-                      zIndex: 3,
-                      boxShadow: "0 0 0 1px rgba(255,255,255,0.04)",
-                    }} />
+                      position: "absolute", top: "10px", left: "50%", transform: "translateX(-50%)",
+                      width: "95px", height: "28px", background: "#000", borderRadius: "20px",
+                      zIndex: 3, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 1px 3px rgba(0,0,0,0.5)",
+                    }}>
+                      <div style={{
+                        position: "absolute", right: "18px", top: "50%", transform: "translateY(-50%)",
+                        width: "8px", height: "8px", borderRadius: "50%",
+                        background: "radial-gradient(circle, #1a1a2e 40%, #0a0a0a 60%)",
+                        boxShadow: "inset 0 0 2px rgba(255,255,255,0.1)",
+                      }} />
+                    </div>
 
-                    {/* Video */}
-                    <video
-                      src="/videos/future-infinit-mobile.mp4"
-                      autoPlay loop muted playsInline
-                      style={{ width: "100%", display: "block" }}
-                    />
+                    <video src="/videos/future-infinit-mobile.mp4" autoPlay loop muted playsInline style={{ width: "100%", display: "block" }} />
 
-                    {/* Glass reflection overlay */}
-                    <div style={{
-                      position: "absolute", inset: 0,
-                      background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%)",
-                      pointerEvents: "none",
-                      zIndex: 2,
-                      borderRadius: "40px",
-                    }} />
-
-                    {/* Home indicator */}
-                    <div style={{
-                      position: "absolute", bottom: "8px", left: "50%",
-                      transform: "translateX(-50%)",
-                      width: "100px", height: "4px",
-                      background: "rgba(255,255,255,0.35)",
-                      borderRadius: "2px",
-                      zIndex: 3,
-                    }} />
+                    <div style={{ position: "absolute", inset: 0, borderRadius: "42px", boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.08)", pointerEvents: "none", zIndex: 2 }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 45%)", pointerEvents: "none", zIndex: 2, borderRadius: "42px" }} />
+                    <div style={{ position: "absolute", bottom: "7px", left: "50%", transform: "translateX(-50%)", width: "105px", height: "4px", background: "rgba(255,255,255,0.35)", borderRadius: "2px", zIndex: 3 }} />
                   </div>
                 </div>
               </div>

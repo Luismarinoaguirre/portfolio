@@ -11,6 +11,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "digital-bros",
+    title: "Digital Bros",
+    subtitle: "Tourism Website",
+    category: "UX/UI",
+    tags: ["UX/UI", "Web", "Redesign"],
+    image: "/projects/digital-bros/thumbnail.png",
+    year: "2024",
+    color: "#1B4D3B",
+  },
+  {
     id: "future-infinit",
     title: "Future Infinit",
     subtitle: "E-Commerce Platform",
