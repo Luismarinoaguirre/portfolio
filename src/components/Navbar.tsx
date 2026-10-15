@@ -79,8 +79,10 @@ export default function Navbar() {
 
   const scrollToSection = useCallback((hash: string) => {
     const scrollTo = () => {
-      if (window.lenis) {
-        window.lenis.scrollTo(hash, { duration: 1.4, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const lenis = (window as any).lenis;
+      if (lenis?.scrollTo) {
+        lenis.scrollTo(hash, { duration: 1.4, easing: (t: number) => 1 - Math.pow(1 - t, 4) });
       } else {
         document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
       }
