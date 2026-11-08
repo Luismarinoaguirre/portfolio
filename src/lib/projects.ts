@@ -11,6 +11,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "mio",
+    title: "MIO Buenos Aires",
+    subtitle: "Boutique Hotel Website",
+    category: "UX/UI",
+    tags: ["UX/UI", "Web", "Hospitality"],
+    image: "/projects/mio/cover.png",
+    year: "2026",
+    color: "#3E5D58",
+  },
+  {
+    id: "faro-verde",
+    title: "Faro Verde",
+    subtitle: "Corporate Website",
+    category: "UX/UI",
+    tags: ["UX/UI", "Web", "Corporate"],
+    image: "/projects/faro-verde/cover.png",
+    year: "2026",
+    color: "#2A2F2D",
+  },
+  {
+    id: "atp-dmc",
+    title: "ATP DMC",
+    subtitle: "Tourism Website",
+    category: "UX/UI",
+    tags: ["UX/UI", "Web", "Tourism"],
+    image: "/projects/atp-dmc/cover.png",
+    year: "2026",
+    color: "#002A34",
+  },
+  {
     id: "daly-nosh",
     title: "Daly Nosh",
     subtitle: "Mobile App",

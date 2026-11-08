@@ -255,3 +255,33 @@ html.lenis, html.lenis body {
   animation: blink 1.06s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+
+/* ── Case study: auto-scrolling page screenshots ── */
+.cs-scroll-frame {
+  container-type: size;
+  overflow: hidden;
+  position: relative;
+}
+.cs-scroll-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: csScroll var(--cs-duration, 30s) ease-in-out 1s infinite alternate;
+  will-change: transform;
+}
+.cs-scroll-frame:hover .cs-scroll-img {
+  animation-play-state: paused;
+}
+@keyframes csScroll {
+  0%, 6% { transform: translateY(0); }
+  94%, 100% { transform: translateY(calc(-100% + 100cqh)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-scroll-img { animation: none; }
+}
+@media (min-width: 1024px) {
+  .cs-sticky {
+    position: sticky;
+    top: 120px;
+  }
+}
