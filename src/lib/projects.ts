@@ -11,6 +11,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "rasante",
+    title: "Rasante",
+    subtitle: "Patagonia Lodge Website",
+    category: "UX/UI",
+    tags: ["UX/UI", "Web", "Hospitality"],
+    image: "/projects/rasante/cover.png",
+    year: "2026",
+    color: "#151C24",
+  },
+  {
     id: "mio",
     title: "MIO Buenos Aires",
     subtitle: "Boutique Hotel Website",

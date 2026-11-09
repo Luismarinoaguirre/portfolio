@@ -266,18 +266,35 @@ html.lenis, html.lenis body {
   display: block;
   width: 100%;
   height: auto;
-  animation: csScroll var(--cs-duration, 30s) ease-in-out 1s infinite alternate;
-  will-change: transform;
+  animation: csScroll var(--cs-duration, 30s) linear 1s infinite;
+  will-change: transform, opacity;
 }
 .cs-scroll-frame:hover .cs-scroll-img {
   animation-play-state: paused;
 }
+/* Top → bottom only: hold, scroll down, fade out, restart from the top. */
 @keyframes csScroll {
-  0%, 6% { transform: translateY(0); }
-  94%, 100% { transform: translateY(calc(-100% + 100cqh)); }
+  0% { transform: translateY(0); opacity: 1; }
+  5% { transform: translateY(0); opacity: 1; animation-timing-function: ease-in-out; }
+  88% { transform: translateY(calc(-100% + 100cqh)); opacity: 1; }
+  94% { transform: translateY(calc(-100% + 100cqh)); opacity: 0; }
+  95% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cs-scroll-img { animation: none; }
+}
+.cs-phone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  align-items: start;
+}
+@media (min-width: 640px) {
+  .cs-phone-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .cs-phone-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }
 @media (min-width: 1024px) {
   .cs-sticky {
